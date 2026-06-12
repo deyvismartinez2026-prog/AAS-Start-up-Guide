@@ -16,6 +16,10 @@
   ],
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/00-start-here.html"
+    },
+    {
       "source": "/startup-templates/:file",
       "destination": "/startup-templates/:file"
     }
