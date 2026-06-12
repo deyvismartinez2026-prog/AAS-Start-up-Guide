@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AAS Startup Roadmap Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --paper: #F9F7F1;
+    --sheet: #FFFFFF;
+    --ink: #0E1116;
+    --body: #565B63;
+    --faint: #8E9097;
+    --rule: #E4E1D5;
+    --rule-dark: #CFCABE;
+    --blue: #1E5BFF;
+    --blue-deep: #0F45E0;
+    --blue-soft: rgba(30, 91, 255, .08);
+    --night: #0A0D13;
+    --night-2: #101620;
+    --green: #0E8F55;
+    --green-soft: rgba(14, 143, 85, .10);
+    --amber: #B87300;
+    --amber-soft: rgba(184, 115, 0, .12);
+    --red: #B42318;
+    --red-soft: rgba(180, 35, 24, .10);
+    --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --shadow: 0 22px 60px rgba(14,17,22,.08);
+    --radius: 22px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.45;
+  }
+  button, input, select, textarea { font: inherit; }
+  button { cursor: pointer; }
+  a { color: inherit; }
+  .mono { font-family: var(--mono); }
+  .blue { color: var(--blue); }
+  .faint { color: var(--faint); }
+  .small { font-size: 13px; color: var(--body); }
+  .micro { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+
+  .app-shell { min-height: 100vh; display: grid; grid-template-columns: 392px minmax(0, 1fr); }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 26px;
+    border-right: 1px solid var(--rule);
+    background: rgba(249,247,241,.86);
+    backdrop-filter: blur(10px);
+    overflow: auto;
+  }
+  .brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    min-width: 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand img { height: 24px; width: auto; max-width: 214px; flex: 0 1 auto; display: block; }
+  .brand-mark {
+    width: 34px; height: 34px; border: 1px solid var(--ink); display: grid; place-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: -.03em; font-weight: 600;
+  }
+  .brand-text { flex: 0 0 124px; min-width: 0; }
+  .brand-text strong { display: block; font-size: 12px; line-height: 1.35; letter-spacing: .16em; text-transform: uppercase; overflow-wrap: anywhere; }
+  .brand-text span { display: block; margin-top: 3px; font-family: var(--mono); font-size: 9px; line-height: 1.55; color: var(--faint); letter-spacing: .12em; text-transform: uppercase; overflow-wrap: anywhere; }
+
+  .side-section { margin-top: 22px; }
+  .side-title { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin: 0 0 10px; }
+  .field-stack { display: grid; gap: 10px; }
+  label.field-label { display: grid; gap: 6px; font-size: 12px; color: var(--body); }
+  input, select, textarea {
+    width: 100%;
+    border: 1px solid var(--rule-dark);
+    background: var(--sheet);
+    color: var(--ink);
+    border-radius: 0;
+    padding: 10px 11px;
+    min-height: 42px;
+    outline: none;
+  }
+  textarea { resize: vertical; min-height: 80px; }
+  input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+
+  .doc-list { display: grid; gap: 8px; }
+  .doc-link {
+    display: grid;
+    grid-template-columns: 26px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+  }
+  .doc-link:hover strong { color: var(--blue); }
+  .doc-link .num { font-family: var(--mono); font-size: 11px; color: var(--blue); font-weight: 600; }
+  .doc-link strong { font-size: 13px; line-height: 1.2; }
+  .doc-link span:not(.num) { color: var(--faint); }
+
+  .side-actions { display: grid; gap: 8px; }
+  .btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 11px 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.secondary { background: transparent; color: var(--ink); border-color: var(--rule-dark); }
+  .btn.secondary:hover { border-color: var(--ink); }
+  .btn.blue { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .btn.danger { background: transparent; border-color: var(--red); color: var(--red); }
+  .btn.ghost { background: transparent; border-color: transparent; color: var(--body); min-height: 36px; padding: 6px 8px; }
+  .btn.ghost:hover { color: var(--ink); background: rgba(14,17,22,.04); }
+
+  .main { min-width: 0; }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 16px 26px;
+    border-bottom: 1px solid var(--rule);
+    background: rgba(249,247,241,.90);
+    backdrop-filter: blur(12px);
+  }
+  .nav-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nav-pills a {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 10px;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--body);
+    border: 1px solid transparent;
+  }
+  .nav-pills a:hover { color: var(--ink); border-color: var(--rule-dark); background: rgba(255,255,255,.55); }
+  .save-state { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+
+  .hero {
+    padding: 44px 26px 26px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+    gap: 24px;
+  }
+  .hero-card {
+    background: var(--night);
+    color: var(--paper);
+    min-height: 380px;
+    padding: clamp(28px, 4vw, 52px);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card:before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(115deg, rgba(30,91,255,.22), transparent 42%),
+      repeating-linear-gradient(120deg, rgba(249,247,241,.045) 0 1px, transparent 1px 46px);
+    pointer-events: none;
+  }
+  .hero-card > * { position: relative; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #6E96FF;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(42px, 7vw, 92px);
+    line-height: .96;
+    letter-spacing: -.035em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  h1 em { color: #6E96FF; font-style: italic; font-weight: 400; }
+  .hero-card p { max-width: 740px; color: rgba(249,247,241,.70); font-size: 18px; margin: 0; }
+  .hero-footer {
+    margin-top: 42px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .hero-stat { border-top: 1px solid rgba(249,247,241,.22); padding-top: 12px; }
+  .hero-stat strong { display: block; font-family: var(--serif); font-size: 38px; font-weight: 400; color: #fff; line-height: 1; }
+  .hero-stat span { margin-top: 8px; display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(249,247,241,.45); }
+
+  .brief-card {
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: grid;
+    align-content: start;
+    gap: 18px;
+  }
+  .brief-card h2, section h2 {
+    font-family: var(--serif);
+    font-size: 33px;
+    line-height: 1.05;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -.025em;
+  }
+  .brief-card .decision { border: 1px solid var(--rule); padding: 16px; background: var(--paper); }
+  .decision strong { display: block; margin-bottom: 5px; }
+  .decision p { margin: 0; color: var(--body); font-size: 14px; }
+
+  .section { padding: 28px 26px; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: end;
+    border-top: 1px solid var(--ink);
+    padding-top: 18px;
+    margin-bottom: 18px;
+  }
+  .section-head p { margin: 8px 0 0; color: var(--body); max-width: 720px; }
+
+  .grid { display: grid; gap: 14px; }
+  .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card {
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    padding: 18px;
+  }
+  .metric-card { min-height: 130px; display: grid; align-content: space-between; }
+  .metric-card .label { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .metric-card .value { font-family: var(--serif); font-size: 38px; line-height: 1; font-weight: 400; letter-spacing: -.02em; margin-top: 18px; }
+  .metric-card .sub { margin-top: 8px; color: var(--body); font-size: 13px; }
+
+  .progress-shell { height: 8px; background: var(--rule); overflow: hidden; margin-top: 12px; }
+  .progress-fill { height: 100%; background: var(--blue); width: 0%; transition: width .25s ease; }
+  .progress-fill.green { background: var(--green); }
+  .progress-fill.amber { background: var(--amber); }
+
+  .lanes-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+  .button-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip-btn {
+    min-height: 36px;
+    border: 1px solid var(--rule-dark);
+    background: transparent;
+    color: var(--body);
+    padding: 7px 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .chip-btn.active, .chip-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .week-strip { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 2px; }
+  .week-strip .chip-btn { min-width: 44px; }
+
+  .task-board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .lane-column { background: rgba(255,255,255,.45); border: 1px solid var(--rule); min-height: 220px; }
+  .lane-column header {
+    padding: 14px 14px 12px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--sheet);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .lane-column header h3 { margin: 0; font-size: 15px; }
+  .lane-column header span { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--faint); text-transform: uppercase; }
+  .task-list { display: grid; gap: 0; }
+  .task-card {
+    border-bottom: 1px solid var(--rule);
+    padding: 14px;
+    background: var(--sheet);
+  }
+  .task-card:last-child { border-bottom: none; }
+  .task-top { display: grid; grid-template-columns: 25px 1fr auto; gap: 10px; align-items: start; }
+  .task-check {
+    width: 22px;
+    height: 22px;
+    min-height: 22px;
+    padding: 0;
+    margin: 1px 0 0;
+    accent-color: var(--green);
+    cursor: pointer;
+  }
+  .task-title { font-weight: 700; line-height: 1.25; }
+  .task-meta { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 6px; border: 1px solid var(--rule); color: var(--body); background: var(--paper); }
+  .pill.high { color: var(--red); background: var(--red-soft); border-color: rgba(180,35,24,.18); }
+  .pill.medium { color: var(--amber); background: var(--amber-soft); border-color: rgba(184,115,0,.18); }
+  .pill.low { color: var(--green); background: var(--green-soft); border-color: rgba(14,143,85,.18); }
+  .task-note { margin-top: 10px; display: none; }
+  .task-card.open .task-note { display: block; }
+  .task-note textarea { min-height: 70px; font-size: 13px; }
+  .task-actions { display: flex; align-items: center; gap: 6px; }
+  .empty { padding: 30px 14px; color: var(--faint); font-size: 13px; text-align: center; }
+
+  .score-table, .pipeline-table { width: 100%; border-collapse: collapse; background: var(--sheet); border: 1px solid var(--rule); }
+  .score-table th, .score-table td, .pipeline-table th, .pipeline-table td { border-bottom: 1px solid var(--rule); padding: 12px; text-align: left; vertical-align: middle; }
+  .score-table th, .pipeline-table th { font-family: var(--mono); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+  .score-table tr:last-child td, .pipeline-table tr:last-child td { border-bottom: none; }
+  .score-table input, .pipeline-table input, .pipeline-table select { min-height: 38px; padding: 8px; font-size: 13px; }
+
+  .milestone-list { display: grid; gap: 10px; }
+  .milestone {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    padding: 12px;
+  }
+  .milestone .phase { font-family: var(--mono); font-size: 11px; color: var(--blue); font-weight: 600; }
+  .milestone strong { display: block; }
+  .milestone span { color: var(--body); font-size: 13px; }
+
+  .add-panel { background: var(--sheet); border: 1px solid var(--rule); padding: 16px; margin-top: 14px; }
+  .add-panel .row { display: grid; grid-template-columns: minmax(180px, 1fr) 160px 110px 140px auto; gap: 10px; align-items: end; }
+  .add-panel label { display: grid; gap: 6px; font-size: 12px; color: var(--body); }
+
+  .footer-note { padding: 30px 26px 44px; color: var(--faint); font-size: 12px; border-top: 1px solid var(--rule); }
+  .hidden { display: none !important; }
+
+  @media (max-width: 1180px) {
+    .app-shell { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
+    .hero { grid-template-columns: 1fr; }
+    .task-board { grid-template-columns: 1fr; }
+    .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    .topbar { position: relative; align-items: flex-start; flex-direction: column; }
+    .hero { padding-top: 24px; }
+    .hero-footer, .grid.cols-2, .grid.cols-3, .grid.cols-4 { grid-template-columns: 1fr; }
+    .add-panel .row { grid-template-columns: 1fr; }
+    .score-table, .score-table thead, .score-table tbody, .score-table tr, .score-table th, .score-table td,
+    .pipeline-table, .pipeline-table thead, .pipeline-table tbody, .pipeline-table tr, .pipeline-table th, .pipeline-table td { display: block; }
+    .score-table thead, .pipeline-table thead { display: none; }
+    .score-table td, .pipeline-table td { border-bottom: none; padding: 8px 12px; }
+    .score-table tr, .pipeline-table tr { border-bottom: 1px solid var(--rule); padding: 8px 0; display: block; }
+  }
+  @media print {
+    .sidebar, .topbar, .add-panel, .task-actions, .side-actions { display: none !important; }
+    .app-shell { display: block; }
+    .hero { display: block; }
+    .hero-card { color: var(--ink); background: var(--paper); border: 1px solid var(--ink); min-height: auto; }
+    .hero-card:before { display:none; }
+    .hero-card p, .hero-stat span { color: var(--body); }
+    .hero-stat strong { color: var(--ink); }
+    .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/logo-nav-dark.png" alt="Advanced Agentic Systems logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+      <div class="brand-mark" style="display:none;">AAS</div>
+      <div class="brand-text">
+        <strong>Startup Roadmap</strong>
+        <span>Pre-startup command center</span>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h3 class="side-title">Launch settings</h3>
+      <div class="field-stack">
+        <label class="field-label">Launch start date
+          <input type="date" id="startDate" />
+        </label>
+        <label class="field-label">Current planning mode
+          <select id="planningMode">
+            <option value="standard">Standard 90-day launch</option>
+            <option value="revenue">Revenue-first rescue mode</option>
+            <option value="federal">Federal/admin catch-up</option>
+            <option value="platform">Platform/content sprint</option>
+          </select>
+        </label>
+        <label class="field-label">This week’s operating note
+          <textarea id="weeklyNote" placeholder="What must move this week? One sentence."></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h3 class="side-title">Package links</h3>
+      <div class="doc-list">
+        <a class="doc-link" href="00-start-here.html"><span class="num">00</span><strong>Start Here</strong><span>↗</span></a>
+        <a class="doc-link" href="01-business-plan.html"><span class="num">01</span><strong>Business Plan</strong><span>↗</span></a>
+        <a class="doc-link" href="02-executive-summary.html"><span class="num">02</span><strong>Executive Summary</strong><span>↗</span></a>
+        <a class="doc-link" href="03-sdvosb-launch-guide.html"><span class="num">03</span><strong>SDVOSB Guide</strong><span>↗</span></a>
+        <a class="doc-link" href="04-capability-statement.html"><span class="num">04</span><strong>Capability Statement</strong><span>↗</span></a>
+        <a class="doc-link" href="05-financial-projections.html"><span class="num">05</span><strong>Financial Model</strong><span>↗</span></a>
+        <a class="doc-link" href="06-90-day-action-plan.html"><span class="num">06</span><strong>90-Day Action Plan</strong><span>↗</span></a>
+        <a class="doc-link" href="07-startup-setup-checklist.html"><span class="num">07</span><strong>Startup Setup</strong><span>↗</span></a>
+        <a class="doc-link" href="../aas-audit-companion/dist/index.html"><span class="num">APP</span><strong>Audit Companion</strong><span>↗</span></a>
+      </div>
+    </div>
+
+    <div class="side-section side-actions">
+      <button class="btn blue" id="exportBtn">Export dashboard JSON</button>
+      <label class="btn secondary" for="importFile">Import JSON<input class="hidden" type="file" id="importFile" accept="application/json" /></label>
+      <button class="btn secondary" onclick="window.print()">Print current view</button>
+      <button class="btn danger" id="resetBtn">Reset saved data</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <nav class="nav-pills" aria-label="Dashboard sections">
+        <a href="#overview">Overview</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#scoreboard">Scoreboard</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#admin">Admin</a>
+      </nav>
+      <div class="save-state" id="saveState">Saved locally</div>
+    </div>
+
+    <section class="hero" id="overview">
+      <div class="hero-card">
+        <div class="eyebrow">AAS launch system · 90 days · three lanes</div>
+        <h1>Move from prepared to <em>in market.</em></h1>
+        <p>This dashboard turns the business plan, SDVOSB launch guide, and 90-day action plan into a live operating board. It saves progress in this browser only; export JSON weekly as your backup.</p>
+        <div class="hero-footer">
+          <div class="hero-stat"><strong id="overallPct">0%</strong><span>Roadmap tasks complete</span></div>
+          <div class="hero-stat"><strong id="currentWeek">W1</strong><span>Active launch week</span></div>
+          <div class="hero-stat"><strong id="focusCount">0</strong><span>Open high-priority actions</span></div>
+        </div>
+      </div>
+      <div class="brief-card">
+        <div>
+          <div class="micro">This week’s operating decision</div>
+          <h2 id="modeTitle">Standard launch cadence</h2>
+        </div>
+        <div class="decision">
+          <strong>Rule of the quarter</strong>
+          <p>If a week forces a choice between lanes, Lane A — revenue — wins. Cash and proof make every other lane easier.</p>
+        </div>
+        <div class="decision">
+          <strong>Current note</strong>
+          <p id="weeklyNotePreview">Add a one-sentence focus note in the sidebar.</p>
+        </div>
+        <div class="grid cols-2">
+          <div class="metric-card card"><span class="label">Revenue lane</span><div class="value" id="revPct">0%</div><div class="progress-shell"><div class="progress-fill" id="revBar"></div></div></div>
+          <div class="metric-card card"><span class="label">Federal/admin</span><div class="value" id="fedPct">0%</div><div class="progress-shell"><div class="progress-fill amber" id="fedBar"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="section-head">
+        <div>
+          <div class="micro">Week-by-week execution</div>
+          <h2>Roadmap board</h2>
+          <p>Tasks are seeded from your 90-day action plan. Complete them, add notes, and add new actions as the launch gets real.</p>
+        </div>
+      </div>
+
+      <div class="lanes-toolbar">
+        <div>
+          <div class="micro">Lane filter</div>
+          <div class="button-group" id="laneFilters"></div>
+        </div>
+        <div>
+          <div class="micro">Week filter</div>
+          <div class="week-strip" id="weekFilters"></div>
+        </div>
+      </div>
+
+      <div class="task-board" id="taskBoard"></div>
+
+      <div class="add-panel">
+        <div class="micro" style="margin-bottom:10px;">Add a new action</div>
+        <form class="row" id="addTaskForm">
+          <label>Action
+            <input id="newTaskTitle" placeholder="Example: Book CPA consult" required />
+          </label>
+          <label>Lane
+            <select id="newTaskLane">
+              <option value="revenue">Revenue</option>
+              <option value="federal">Federal/admin</option>
+              <option value="platform">Platform/content</option>
+            </select>
+          </label>
+          <label>Week
+            <select id="newTaskWeek"></select>
+          </label>
+          <label>Priority
+            <select id="newTaskPriority">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+          <button class="btn blue" type="submit">Add</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="scoreboard">
+      <div class="section-head">
+        <div>
+          <div class="micro">Day-90 measures</div>
+          <h2>Scoreboard</h2>
+          <p>Floor means the plan survives. Target means the base case is on track. Update actuals during the weekly operating hour.</p>
+        </div>
+      </div>
+      <div class="grid cols-4" id="scoreMetrics"></div>
+      <div style="overflow:auto; margin-top:14px;">
+        <table class="score-table">
+          <thead><tr><th>Measure</th><th>Floor</th><th>Target</th><th>Actual</th><th>Progress</th></tr></thead>
+          <tbody id="scoreRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="pipeline">
+      <div class="section-head">
+        <div>
+          <div class="micro">Revenue engine</div>
+          <h2>Commercial pipeline</h2>
+          <p>Use this as the lightweight tracker until you connect a CRM. Weighted pipeline is a planning estimate based on stage, not a guarantee.</p>
+        </div>
+        <button class="btn blue" id="addProspectBtn">Add prospect</button>
+      </div>
+      <div class="grid cols-3" style="margin-bottom:14px;">
+        <div class="metric-card card"><span class="label">Prospects</span><div class="value" id="pipelineCount">0</div><div class="sub">Rows in tracker</div></div>
+        <div class="metric-card card"><span class="label">Weighted pipeline</span><div class="value" id="pipelineWeighted">$0</div><div class="sub">Stage-adjusted estimate</div></div>
+        <div class="metric-card card"><span class="label">Next actions due</span><div class="value" id="pipelineDue">0</div><div class="sub">Rows with action text</div></div>
+      </div>
+      <div style="overflow:auto;">
+        <table class="pipeline-table">
+          <thead><tr><th>Prospect / org</th><th>Segment</th><th>Stage</th><th>Potential $</th><th>Next action</th><th></th></tr></thead>
+          <tbody id="pipelineRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="admin">
+      <div class="section-head">
+        <div>
+          <div class="micro">Formation + privacy + SDVOSB readiness</div>
+          <h2>Startup setup milestones</h2>
+          <p>The blockers that make the company real and contract-ready: privacy-conscious Florida LLC setup, digital office/mail handling, EIN, banking, bookkeeping, templates, social presence, SAM, VetCert, insurance, contracts, and buyer-ready collateral.</p>
+        </div>
+      </div>
+      <div class="milestone-list" id="milestones"></div>
+    </section>
+
+    <div class="footer-note">
+      Built for Advanced Agentic Systems. Data is stored locally in your browser via localStorage. Use Export JSON before clearing browser data or moving machines.
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const STORAGE_KEY = "aas-startup-roadmap-dashboard-v1";
+  const lanes = {
+    revenue: { title: "Lane A — Revenue", short: "Revenue", color: "green" },
+    federal: { title: "Lane B — Formation/admin/federal", short: "Formation/admin", color: "amber" },
+    platform: { title: "Lane C — Operating system/content", short: "Ops/content", color: "blue" }
+  };
+  const stageWeights = {
+    "Target list": .10,
+    "Contacted": .20,
+    "Discovery": .35,
+    "Workshop booked": .45,
+    "Proposal out": .65,
+    "Verbal yes": .85,
+    "Closed won": 1,
+    "Closed lost": 0
+  };
+  const defaultTasks = [
+    {id:"w1-r1", week:1, lane:"revenue", priority:"high", title:"Finalize the first sellable offer: Foundation Workflow Intelligence Audit scope, $25K price, deliverables, timeline, and decision-call rule."},
+    {id:"w1-r2", week:1, lane:"revenue", priority:"high", title:"Write the workshop/strategy review one-pager and first 15 warm outreach messages."},
+    {id:"w1-r3", week:1, lane:"revenue", priority:"medium", title:"Start the 50-name target list: CPA firms, service businesses, veteran/gov-adjacent contacts, and warm referral sources."},
+    {id:"w1-f1", week:1, lane:"federal", priority:"high", title:"Choose the privacy-first Florida LLC setup path: registered agent, digital office/CMRA mailbox, business phone, public email, and no home address on public-facing materials."},
+    {id:"w1-f2", week:1, lane:"federal", priority:"high", title:"Confirm Florida LLC name availability on Sunbiz; buy/confirm domain; create password manager vault and secure startup records folder."},
+    {id:"w1-f3", week:1, lane:"federal", priority:"high", title:"Save VA Benefit Summary Letter, DD-214, ID, proof of address, and service-disabled documentation as clean PDFs for bank/SAM/VetCert workflows."},
+    {id:"w1-p1", week:1, lane:"platform", priority:"high", title:"Build the startup command folder: vendor log, compliance calendar, account inventory, document naming rules, and decision log."},
+    {id:"w1-p2", week:1, lane:"platform", priority:"medium", title:"Create the first working templates list: proposal, SOW, invoice, W-9, discovery questionnaire, intake form, follow-up email, and meeting notes."},
+
+    {id:"w2-r1", week:2, lane:"revenue", priority:"high", title:"Build two industry workshop outlines: CPA/accounting and generic service business."},
+    {id:"w2-r2", week:2, lane:"revenue", priority:"high", title:"Send the first 15 warm outreach notes and log every response in the pipeline tracker."},
+    {id:"w2-f1", week:2, lane:"federal", priority:"high", title:"Select and activate registered agent plus digital office/mail handling provider; confirm principal street address, mailing address, scan/forward rules, and who manages incoming mail."},
+    {id:"w2-f2", week:2, lane:"federal", priority:"high", title:"File Florida LLC Articles of Organization on Sunbiz after address/privacy plan is set; use business contact email, not personal email, because Florida email addresses can be public records."},
+    {id:"w2-f3", week:2, lane:"federal", priority:"high", title:"Draft operating agreement with attorney/CPA review, including veteran ownership/control language needed for future SDVOSB/VetCert review."},
+    {id:"w2-p1", week:2, lane:"platform", priority:"high", title:"Set up business email, calendar booking, cloud drive, e-signature folder, and standard folder structure for clients, finance, legal, federal, and marketing."},
+    {id:"w2-p2", week:2, lane:"platform", priority:"medium", title:"Reserve social handles/company pages for LinkedIn, X, YouTube, GitHub, and relevant professional directories; keep bios consistent and non-hype."},
+
+    {id:"w3-r1", week:3, lane:"revenue", priority:"high", title:"Book the first two strategy reviews/workshops for weeks 4–5."},
+    {id:"w3-r2", week:3, lane:"revenue", priority:"medium", title:"Convert demo readout into a sales artifact, clearly labeled as demo data."},
+    {id:"w3-f1", week:3, lane:"federal", priority:"high", title:"After LLC approval, apply for EIN free directly with the IRS; save the EIN confirmation letter and SS-4 details in the tax/legal folder."},
+    {id:"w3-f2", week:3, lane:"federal", priority:"high", title:"Open business checking and tax reserve savings; fund account; connect bookkeeping; create receipt capture and monthly close workflow."},
+    {id:"w3-f3", week:3, lane:"federal", priority:"medium", title:"Confirm local/county license or business tax receipt requirements, sales-tax exposure, and CPA tax setup; document if not required."},
+    {id:"w3-p1", week:3, lane:"platform", priority:"high", title:"Build working templates v1: proposal, SOW, MSA/service terms, invoice, W-9 request packet, kickoff agenda, discovery questionnaire, and follow-up sequence."},
+    {id:"w3-p2", week:3, lane:"platform", priority:"medium", title:"Publish the basic company social presence: LinkedIn company page, founder headline/about update, brand description, and first credibility post."},
+
+    {id:"w4-r1", week:4, lane:"revenue", priority:"high", title:"Deliver workshop #1 and exit with one workflow candidate, named sponsor, and follow-up decision date."},
+    {id:"w4-r2", week:4, lane:"revenue", priority:"high", title:"Send same-week follow-up with audit scope recommendation and decision-call invite."},
+    {id:"w4-f1", week:4, lane:"federal", priority:"high", title:"Bind insurance or document quote status: general liability, professional/E&O, cyber, workers comp if applicable, and COI request workflow."},
+    {id:"w4-f2", week:4, lane:"federal", priority:"high", title:"Create Login.gov and SAM.gov accounts; prepare SAM data: legal name, EIN, physical address, bank EFT, NAICS/PSC, reps/certs, and entity validation docs."},
+    {id:"w4-f3", week:4, lane:"federal", priority:"medium", title:"Document FinCEN/BOI status with current official guidance: U.S.-formed domestic companies are currently exempt under the 2025 interim final rule; re-check with CPA/attorney before quarter close."},
+    {id:"w4-p1", week:4, lane:"platform", priority:"high", title:"Wire website lead capture to a real destination: email/CRM/database, thank-you message, autoresponder, and test submission log."},
+    {id:"w4-p2", week:4, lane:"platform", priority:"medium", title:"Create social/content calendar: weekly founder post, monthly teardown, quarterly proof object, and no unsupported claims."},
+
+    {id:"w5-r1", week:5, lane:"revenue", priority:"high", title:"Deliver workshop #2 and issue first Foundation proposal to strongest sponsor."},
+    {id:"w5-r2", week:5, lane:"revenue", priority:"medium", title:"Continue outreach drumbeat: 10 quality touches per week and two referral asks."},
+    {id:"w5-f1", week:5, lane:"federal", priority:"high", title:"Submit SAM.gov full entity registration; monitor validation and answer entity-validation emails same day."},
+    {id:"w5-f2", week:5, lane:"federal", priority:"medium", title:"Draft DSBS profile narrative, capability keywords, NAICS/PSC list, and buyer-facing capability statement data block."},
+    {id:"w5-p1", week:5, lane:"platform", priority:"high", title:"Stand up the lightweight CRM/pipeline board with fields for source, segment, stage, value, next action, due date, and last touch."},
+    {id:"w5-p2", week:5, lane:"platform", priority:"medium", title:"Publish teardown #1 and update social profiles with website, booking/contact path, and consistent AAS positioning."},
+
+    {id:"w6-r1", week:6, lane:"revenue", priority:"high", title:"Close Foundation audit #1 or keep two proposals live; schedule kickoff within 10 days."},
+    {id:"w6-r2", week:6, lane:"revenue", priority:"high", title:"Lock sponsor, decision-call date, payment terms, and data-access rules in the SOW."},
+    {id:"w6-f1", week:6, lane:"federal", priority:"high", title:"Record SAM Active status, UEI/CAGE, renewal date, DSBS status, NAICS/PSC choices, and reps/certs screenshots."},
+    {id:"w6-f2", week:6, lane:"federal", priority:"high", title:"VetCert packet self-check: 51%+ veteran/service-disabled ownership and control, operating agreement, bank signature authority, resume, VA docs, tax/legal docs."},
+    {id:"w6-p1", week:6, lane:"platform", priority:"medium", title:"Update capability statement, website footer, email signature, and proposal templates with UEI/CAGE when active."},
+
+    {id:"w7-r1", week:7, lane:"revenue", priority:"high", title:"Run Audit #1 week 1: interviews, system inventory, observation."},
+    {id:"w7-r2", week:7, lane:"revenue", priority:"medium", title:"Keep two-workshops-per-month cadence; book workshops #3 and #4."},
+    {id:"w7-f1", week:7, lane:"federal", priority:"high", title:"Submit VetCert application and answer examiner queries same day."},
+    {id:"w7-p1", week:7, lane:"platform", priority:"medium", title:"Run audit through the platform end to end; capture friction patterns for teardown #3."},
+
+    {id:"w8-r1", week:8, lane:"revenue", priority:"high", title:"Run Audit #1 week 2: frequency sampling and loaded-cost capture."},
+    {id:"w8-r2", week:8, lane:"revenue", priority:"medium", title:"Deliver workshop #3 and open a new audit conversation."},
+    {id:"w8-f1", week:8, lane:"federal", priority:"medium", title:"Prepare state veteran certification and 10-target supplier-diversity portal list."},
+    {id:"w8-p1", week:8, lane:"platform", priority:"medium", title:"Publish teardown #3 and refine the 'we can build it ourselves' objection talk track."},
+
+    {id:"w9-r1", week:9, lane:"revenue", priority:"high", title:"Run Audit #1 week 3: opportunity scoring, conservative/optimistic scenarios, sponsor pre-brief."},
+    {id:"w9-f1", week:9, lane:"federal", priority:"high", title:"If VetCert approved, update SAM reps, DSBS, capability statement, site footer, and email signature."},
+    {id:"w9-f2", week:9, lane:"federal", priority:"medium", title:"File state certification and start supplier-portal registrations."},
+    {id:"w9-p1", week:9, lane:"platform", priority:"medium", title:"Build micro-purchase one-pagers: workshop-for-office and audit-lite."},
+
+    {id:"w10-r1", week:10, lane:"revenue", priority:"high", title:"Deliver Audit #1 executive readout and hold decision call within five business days."},
+    {id:"w10-r2", week:10, lane:"revenue", priority:"high", title:"Send Momentum pilot proposal on the top-ranked opportunity."},
+    {id:"w10-f1", week:10, lane:"federal", priority:"medium", title:"Set SAM saved searches and daily alerts; research USAspending winners and VA OSDBU forecast."},
+    {id:"w10-f2", week:10, lane:"federal", priority:"medium", title:"Hold first monthly APEX session."},
+    {id:"w10-p1", week:10, lane:"platform", priority:"medium", title:"Publish internal before/after proof object and write past-performance sheet entry #1."},
+
+    {id:"w11-r1", week:11, lane:"revenue", priority:"high", title:"Negotiate pilot, issue Audit #2 proposal, and deliver workshop #5."},
+    {id:"w11-f1", week:11, lane:"federal", priority:"high", title:"File sources-sought response #1 in a core lane."},
+    {id:"w11-f2", week:11, lane:"federal", priority:"medium", title:"Send OSDBU intro emails to VA and two civilian agencies with certified capability statement."},
+    {id:"w11-p1", week:11, lane:"platform", priority:"medium", title:"Draft teardown #4 from sanitized audit #1 patterns and finalize rate card with CPA."},
+
+    {id:"w12-r1", week:12, lane:"revenue", priority:"high", title:"Close pilot #1 or Audit #2; open first Operating Partner conversation with audit sponsor."},
+    {id:"w12-f1", week:12, lane:"federal", priority:"high", title:"File sources-sought response #2 and deliver first micro-purchase pitch to a real cardholder contact."},
+    {id:"w12-p1", week:12, lane:"platform", priority:"medium", title:"Groom platform backlog from real usage: PDF export, presets, and v1.1 list."},
+
+    {id:"w13-r1", week:13, lane:"revenue", priority:"high", title:"Quarter close: pilot kickoff target or Audit #2 underway; retainer pipeline ≥ 1 qualified conversation."},
+    {id:"w13-f1", week:13, lane:"federal", priority:"medium", title:"Compliance sweep: SAM renewal, recertification, insurance, records, and reminders calendared."},
+    {id:"w13-p1", week:13, lane:"platform", priority:"high", title:"Run 90-day review against scoreboard and write the next 90-day plan with real conversion data."}
+  ];
+  const scoreboard = [
+    {id:"workshops", measure:"Workshops / operator briefings delivered", floor:"5", target:"8", targetNumber:8, prefix:""},
+    {id:"audits", measure:"Foundation audits closed", floor:"1", target:"2", targetNumber:2, prefix:""},
+    {id:"pilot", measure:"Momentum pilot", floor:"Proposal out", target:"Kickoff", targetNumber:null, prefix:""},
+    {id:"teardowns", measure:"Teardown pieces published", floor:"3", target:"4", targetNumber:4, prefix:""},
+    {id:"pipeline", measure:"Qualified pipeline, weighted", floor:"$60K", target:"$120K", targetNumber:120000, prefix:"$"},
+    {id:"revenue", measure:"Revenue collected", floor:"$27K", target:"$48K", targetNumber:48000, prefix:"$"},
+    {id:"llc", measure:"Privacy-first Florida LLC setup", floor:"Filed", target:"Filed + address plan clean", targetNumber:null, prefix:""},
+    {id:"einbank", measure:"EIN, bank, bookkeeping", floor:"Live", target:"Live + monthly close", targetNumber:null, prefix:""},
+    {id:"templates", measure:"Working startup templates live", floor:"8", target:"14", targetNumber:14, prefix:""},
+    {id:"social", measure:"Public profiles / social handles live", floor:"2", target:"5", targetNumber:5, prefix:""},
+    {id:"sam", measure:"SAM.gov status", floor:"Active", target:"Active", targetNumber:null, prefix:""},
+    {id:"vetcert", measure:"SBA VetCert", floor:"Submitted", target:"Approved", targetNumber:null, prefix:""},
+    {id:"sources", measure:"Sources-sought responses filed", floor:"1", target:"2", targetNumber:2, prefix:""},
+    {id:"osdbu", measure:"OSDBU / buyer introductions held", floor:"1", target:"3", targetNumber:3, prefix:""},
+    {id:"portals", measure:"Supplier-diversity portals live", floor:"3", target:"5", targetNumber:5, prefix:""},
+    {id:"pastperf", measure:"Past-performance entries documented", floor:"1", target:"2", targetNumber:2, prefix:""}
+  ];
+  const milestones = [
+    {id:"m0", phase:"0", title:"Privacy-first setup plan", detail:"Registered agent, digital office/CMRA mailbox, public business email/phone, no home address on public materials, vendor/mail handling decision log.", weeks:"Week 1"},
+    {id:"m1", phase:"1", title:"Florida LLC formation", detail:"Sunbiz name check, Articles filed after address plan, operating agreement drafted, startup records folder, annual report reminder by May 1.", weeks:"Weeks 1–2"},
+    {id:"m2", phase:"2", title:"Tax, banking, bookkeeping", detail:"EIN after state approval, business bank account, tax reserve, bookkeeping, receipt capture, CPA/tax consult, local license check.", weeks:"Weeks 3–4"},
+    {id:"m3", phase:"3", title:"Operating stack", detail:"Business email, booking, cloud drive, password manager, CRM/pipeline, e-signature, invoice/payment workflow, website lead capture.", weeks:"Weeks 2–5"},
+    {id:"m4", phase:"4", title:"Working templates", detail:"Proposal, SOW, MSA/service terms, invoice, W-9 packet, discovery questionnaire, kickoff agenda, follow-up sequence, capability statement.", weeks:"Weeks 3–6"},
+    {id:"m5", phase:"5", title:"Federal registrations", detail:"Login.gov, SAM.gov, UEI/CAGE, DSBS profile, NAICS/PSC choices, renewal calendar, APEX cadence.", weeks:"Weeks 4–6"},
+    {id:"m6", phase:"6", title:"SDVOSB certification", detail:"VetCert packet, 51% veteran ownership/control review, VA docs, examiner responses, certified status updates across materials.", weeks:"Weeks 6–9"},
+    {id:"m7", phase:"7", title:"Market presence", detail:"LinkedIn company page, founder profile update, social handles, content calendar, branded email signature, website contact flow, proof objects.", weeks:"Weeks 3–10"},
+    {id:"m8", phase:"8", title:"Stay compliant", detail:"Florida annual report, SAM renewal, insurance renewal, tax deadlines, registered agent/mail review, password/access audit, records retention.", weeks:"Week 13+"}
+  ];
+
+  function defaults(){ return { startDate:"", planningMode:"standard", weeklyNote:"", done:{}, notes:{}, openNotes:{}, customTasks:[], selectedLane:"all", selectedWeek:"all", actuals:{}, pipeline:[] }; }
+  let state = load();
+  function load(){ try { return Object.assign(defaults(), JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}")); } catch(e){ return defaults(); } }
+  function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); const el = document.getElementById("saveState"); el.textContent = "Saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); }
+  function allTasks(){ return defaultTasks.concat(state.customTasks || []); }
+  function fmtMoney(value){ const n = Number(value || 0); return "$" + n.toLocaleString(undefined, {maximumFractionDigits:0}); }
+  function pct(done,total){ return total ? Math.round((done/total)*100) : 0; }
+  function escapeHtml(str){ return String(str || "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch])); }
+  function currentWeek(){ if(!state.startDate) return 1; const start = new Date(state.startDate + "T00:00:00"); const now = new Date(); if(isNaN(start.getTime())) return 1; const diff = Math.floor((now - start) / (7*24*60*60*1000)) + 1; return Math.max(1, Math.min(13, diff)); }
+  function modeCopy(){
+    const map = {
+      standard:["Standard launch cadence", "Run the three lanes in parallel. Keep the weekly operating hour sacred."],
+      revenue:["Revenue-first rescue mode", "Double Lane A workshops, halve content cadence, and avoid adding new offers."],
+      federal:["Federal/admin catch-up", "Clear document blockers first, but do not let paperwork replace buyer conversations."],
+      platform:["Platform/content sprint", "Ship proof objects only when they support a real sales conversation or delivery requirement."]
+    };
+    return map[state.planningMode] || map.standard;
+  }
+
+  function initControls(){
+    document.getElementById("startDate").value = state.startDate || "";
+    document.getElementById("planningMode").value = state.planningMode || "standard";
+    document.getElementById("weeklyNote").value = state.weeklyNote || "";
+    document.getElementById("startDate").addEventListener("change", e => { state.startDate = e.target.value; save(); render(); });
+    document.getElementById("planningMode").addEventListener("change", e => { state.planningMode = e.target.value; save(); render(); });
+    document.getElementById("weeklyNote").addEventListener("input", e => { state.weeklyNote = e.target.value; save(); renderOverview(); });
+
+    const weekSelect = document.getElementById("newTaskWeek");
+    for(let i=1;i<=13;i++){ const opt=document.createElement("option"); opt.value=i; opt.textContent="Week " + i; weekSelect.appendChild(opt); }
+    weekSelect.value = String(currentWeek());
+    document.getElementById("addTaskForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const title = document.getElementById("newTaskTitle").value.trim();
+      if(!title) return;
+      const task = { id:"custom-" + Date.now(), title, lane:document.getElementById("newTaskLane").value, week:Number(document.getElementById("newTaskWeek").value), priority:document.getElementById("newTaskPriority").value, custom:true };
+      state.customTasks.push(task);
+      document.getElementById("newTaskTitle").value = "";
+      save(); render();
+    });
+
+    document.getElementById("addProspectBtn").addEventListener("click", () => {
+      state.pipeline.push({ id:"p-" + Date.now(), name:"", segment:"", stage:"Target list", amount:"", next:"" });
+      save(); renderPipeline();
+    });
+    document.getElementById("exportBtn").addEventListener("click", exportState);
+    document.getElementById("importFile").addEventListener("change", importState);
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      if(confirm("Reset all saved dashboard data? Export first if you want a backup.")) { localStorage.removeItem(STORAGE_KEY); state = defaults(); save(); location.reload(); }
+    });
+  }
+
+  function renderOverview(){
+    const tasks = allTasks();
+    const done = tasks.filter(t => state.done[t.id]).length;
+    const highOpen = tasks.filter(t => t.priority === "high" && !state.done[t.id]).length;
+    document.getElementById("overallPct").textContent = pct(done, tasks.length) + "%";
+    document.getElementById("currentWeek").textContent = "W" + currentWeek();
+    document.getElementById("focusCount").textContent = highOpen;
+    const [title] = modeCopy();
+    document.getElementById("modeTitle").textContent = title;
+    document.getElementById("weeklyNotePreview").textContent = state.weeklyNote || "Add a one-sentence focus note in the sidebar.";
+    ["revenue","federal"].forEach(lane => {
+      const laneTasks = tasks.filter(t => t.lane === lane);
+      const laneDone = laneTasks.filter(t => state.done[t.id]).length;
+      const val = pct(laneDone, laneTasks.length);
+      document.getElementById(lane === "revenue" ? "revPct" : "fedPct").textContent = val + "%";
+      document.getElementById(lane === "revenue" ? "revBar" : "fedBar").style.width = val + "%";
+    });
+  }
+
+  function renderFilters(){
+    const laneBox = document.getElementById("laneFilters");
+    laneBox.innerHTML = "";
+    [{id:"all", label:"All"}, {id:"revenue", label:"Revenue"}, {id:"federal", label:"Federal"}, {id:"platform", label:"Platform"}].forEach(item => {
+      const b = document.createElement("button"); b.className = "chip-btn" + (state.selectedLane === item.id ? " active" : ""); b.textContent = item.label;
+      b.addEventListener("click", () => { state.selectedLane = item.id; save(); renderRoadmap(); renderFilters(); }); laneBox.appendChild(b);
+    });
+    const weekBox = document.getElementById("weekFilters");
+    weekBox.innerHTML = "";
+    [{id:"all", label:"All"}, ...Array.from({length:13},(_,i)=>({id:String(i+1), label:"W"+(i+1)}))].forEach(item => {
+      const b = document.createElement("button"); b.className = "chip-btn" + (String(state.selectedWeek) === item.id ? " active" : ""); b.textContent = item.label;
+      b.addEventListener("click", () => { state.selectedWeek = item.id; save(); renderRoadmap(); renderFilters(); }); weekBox.appendChild(b);
+    });
+  }
+
+  function renderRoadmap(){
+    const board = document.getElementById("taskBoard");
+    board.innerHTML = "";
+    const selected = allTasks().filter(t => (state.selectedLane === "all" || t.lane === state.selectedLane) && (state.selectedWeek === "all" || String(t.week) === String(state.selectedWeek)));
+    Object.keys(lanes).forEach(lane => {
+      if(state.selectedLane !== "all" && state.selectedLane !== lane) return;
+      const laneTasks = selected.filter(t => t.lane === lane).sort((a,b) => a.week - b.week || priorityRank(a.priority)-priorityRank(b.priority));
+      const col = document.createElement("section"); col.className = "lane-column";
+      const done = laneTasks.filter(t => state.done[t.id]).length;
+      col.innerHTML = `<header><div><h3>${lanes[lane].title}</h3><span>${laneTasks.length ? done + "/" + laneTasks.length + " complete" : "No visible tasks"}</span></div></header><div class="task-list"></div>`;
+      const list = col.querySelector(".task-list");
+      if(!laneTasks.length){ list.innerHTML = `<div class="empty">No tasks match this filter.</div>`; }
+      laneTasks.forEach(task => list.appendChild(taskElement(task)));
+      board.appendChild(col);
+    });
+  }
+  function priorityRank(p){ return {high:0, medium:1, low:2}[p] || 3; }
+
+  function taskElement(task){
+    const el = document.createElement("article"); el.className = "task-card" + (state.openNotes[task.id] ? " open" : "");
+    const done = !!state.done[task.id];
+    el.innerHTML = `
+      <div class="task-top">
+        <input class="task-check" type="checkbox" aria-label="Mark complete" ${done ? "checked" : ""}>
+        <div>
+          <div class="task-title">${escapeHtml(task.title)}</div>
+          <div class="task-meta"><span class="pill">Week ${task.week}</span><span class="pill ${task.priority}">${task.priority}</span>${task.custom ? '<span class="pill">Custom</span>' : ''}</div>
+        </div>
+        <div class="task-actions"><button class="btn ghost note-btn" type="button">Notes</button>${task.custom ? '<button class="btn ghost delete-btn" type="button">Delete</button>' : ''}</div>
+      </div>
+      <div class="task-note"><textarea placeholder="Notes, blockers, follow-up...">${escapeHtml(state.notes[task.id] || "")}</textarea></div>`;
+    el.querySelector("input[type=checkbox]").addEventListener("change", e => { state.done[task.id] = e.target.checked; save(); render(); });
+    el.querySelector(".note-btn").addEventListener("click", () => { state.openNotes[task.id] = !state.openNotes[task.id]; save(); renderRoadmap(); });
+    el.querySelector("textarea").addEventListener("input", e => { state.notes[task.id] = e.target.value; save(); });
+    const del = el.querySelector(".delete-btn");
+    if(del) del.addEventListener("click", () => { state.customTasks = state.customTasks.filter(t => t.id !== task.id); delete state.done[task.id]; delete state.notes[task.id]; save(); render(); });
+    return el;
+  }
+
+  function renderScoreboard(){
+    const rows = document.getElementById("scoreRows"); rows.innerHTML = "";
+    let numericProgress = [];
+    scoreboard.forEach(row => {
+      const actual = state.actuals[row.id] || "";
+      let progress = "—";
+      if(row.targetNumber){
+        const val = Number(String(actual).replace(/[$,]/g,"")) || 0;
+        const p = Math.min(100, Math.round((val / row.targetNumber) * 100));
+        numericProgress.push(p);
+        progress = `<div class="progress-shell"><div class="progress-fill ${p >= 100 ? 'green' : p >= 50 ? 'amber' : ''}" style="width:${p}%"></div></div><div class="small">${p}% of target</div>`;
+      }
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td><strong>${row.measure}</strong></td><td>${row.floor}</td><td>${row.target}</td><td><input data-id="${row.id}" value="${escapeHtml(actual)}" placeholder="Update actual" /></td><td>${progress}</td>`;
+      rows.appendChild(tr);
+    });
+    rows.querySelectorAll("input").forEach(input => input.addEventListener("input", e => { state.actuals[e.target.dataset.id] = e.target.value; save(); renderScoreMetrics(); }));
+    renderScoreMetrics();
+  }
+
+  function renderScoreMetrics(){
+    const box = document.getElementById("scoreMetrics");
+    const numericRows = scoreboard.filter(r => r.targetNumber);
+    const progress = numericRows.map(r => Math.min(100, Math.round(((Number(String(state.actuals[r.id] || "").replace(/[$,]/g,"")) || 0) / r.targetNumber) * 100)));
+    const avg = progress.length ? Math.round(progress.reduce((a,b)=>a+b,0) / progress.length) : 0;
+    const workshops = state.actuals.workshops || "0";
+    const revenue = state.actuals.revenue ? fmtMoney(String(state.actuals.revenue).replace(/[$,]/g,"")) : "$0";
+    const pipeline = state.actuals.pipeline ? fmtMoney(String(state.actuals.pipeline).replace(/[$,]/g,"")) : "$0";
+    box.innerHTML = `
+      <div class="metric-card card"><span class="label">Scoreboard health</span><div class="value">${avg}%</div><div class="sub">Average progress across numeric targets</div></div>
+      <div class="metric-card card"><span class="label">Workshops</span><div class="value">${escapeHtml(workshops)}</div><div class="sub">Target: 8 by day 90</div></div>
+      <div class="metric-card card"><span class="label">Revenue collected</span><div class="value">${revenue}</div><div class="sub">Target: $48K</div></div>
+      <div class="metric-card card"><span class="label">Weighted pipeline</span><div class="value">${pipeline}</div><div class="sub">Target: $120K</div></div>`;
+  }
+
+  function renderPipeline(){
+    const rows = document.getElementById("pipelineRows"); rows.innerHTML = "";
+    if(!state.pipeline.length){
+      rows.innerHTML = `<tr><td colspan="6" class="empty">No prospects yet. Add your first warm lead or target account.</td></tr>`;
+    }
+    state.pipeline.forEach(p => {
+      const tr = document.createElement("tr");
+      const stages = Object.keys(stageWeights).map(s => `<option ${p.stage===s ? 'selected' : ''}>${s}</option>`).join("");
+      tr.innerHTML = `
+        <td><input data-field="name" data-id="${p.id}" value="${escapeHtml(p.name)}" placeholder="Org or contact" /></td>
+        <td><input data-field="segment" data-id="${p.id}" value="${escapeHtml(p.segment)}" placeholder="CPA, service, fed prime..." /></td>
+        <td><select data-field="stage" data-id="${p.id}">${stages}</select></td>
+        <td><input data-field="amount" data-id="${p.id}" value="${escapeHtml(p.amount)}" placeholder="25000" inputmode="numeric" /></td>
+        <td><input data-field="next" data-id="${p.id}" value="${escapeHtml(p.next)}" placeholder="Next action" /></td>
+        <td><button class="btn ghost" data-delete="${p.id}" type="button">Delete</button></td>`;
+      rows.appendChild(tr);
+    });
+    rows.querySelectorAll("input, select").forEach(input => input.addEventListener("input", e => {
+      const item = state.pipeline.find(p => p.id === e.target.dataset.id); if(!item) return;
+      item[e.target.dataset.field] = e.target.value; save(); renderPipelineMetrics();
+    }));
+    rows.querySelectorAll("[data-delete]").forEach(btn => btn.addEventListener("click", e => { state.pipeline = state.pipeline.filter(p => p.id !== e.target.dataset.delete); save(); renderPipeline(); }));
+    renderPipelineMetrics();
+  }
+  function renderPipelineMetrics(){
+    const weighted = state.pipeline.reduce((sum,p) => sum + ((Number(String(p.amount||"").replace(/[$,]/g,"")) || 0) * (stageWeights[p.stage] ?? 0)), 0);
+    document.getElementById("pipelineCount").textContent = state.pipeline.length;
+    document.getElementById("pipelineWeighted").textContent = fmtMoney(weighted);
+    document.getElementById("pipelineDue").textContent = state.pipeline.filter(p => (p.next||"").trim()).length;
+    if(!state.actuals.pipeline && weighted) { state.actuals.pipeline = String(Math.round(weighted)); }
+  }
+
+  function renderMilestones(){
+    const box = document.getElementById("milestones"); box.innerHTML = "";
+    milestones.forEach(m => {
+      const related = allTasks().filter(t => t.week <= 13 && ((m.id === "m0" && t.week <= 1) || (m.id === "m1" && t.week <= 3 && t.lane === "federal") || (m.id === "m2" && t.week >=3 && t.week <=6 && t.lane === "federal") || (m.id === "m3" && t.week >=7 && t.week <=9 && t.lane === "federal") || (m.id === "m4" && t.week >=10 && t.week <=12 && t.lane === "federal") || (m.id === "m5" && t.lane === "revenue") || (m.id === "m6" && t.week === 13)));
+      const complete = related.length ? pct(related.filter(t => state.done[t.id]).length, related.length) : 0;
+      const el = document.createElement("article"); el.className = "milestone";
+      el.innerHTML = `<div class="phase">P${m.phase}</div><div><strong>${m.title}</strong><span>${m.detail}</span><div class="progress-shell"><div class="progress-fill" style="width:${complete}%"></div></div></div><div class="micro">${m.weeks}<br>${complete}%</div>`;
+      box.appendChild(el);
+    });
+  }
+
+  function exportState(){
+    const payload = { exportedAt:new Date().toISOString(), version:1, state };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "aas-startup-dashboard-" + new Date().toISOString().slice(0,10) + ".json";
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  }
+  function importState(e){
+    const file = e.target.files && e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        state = Object.assign(defaults(), data.state || data);
+        save(); location.reload();
+      } catch(err) { alert("Could not import JSON: " + err.message); }
+    };
+    reader.readAsText(file);
+  }
+
+  function render(){ renderOverview(); renderFilters(); renderRoadmap(); renderScoreboard(); renderPipeline(); renderMilestones(); }
+  initControls(); render();
+})();
+</script>
+</body>
+</html>

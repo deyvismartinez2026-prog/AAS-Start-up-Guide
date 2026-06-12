@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AAS Financial Projections</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+  :root {
+    --paper:#F9F7F1; --sheet:#FFFFFF; --ink:#0E1116; --body:#565B63; --faint:#8E9097; --rule:#E4E1D5;
+    --blue:#1E5BFF; --blue-soft:rgba(30,91,255,.085); --night:#0A0D13;
+    --serif:"Fraunces", Georgia, serif; --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5; }
+  a { color:inherit; }
+  .wrap { max-width:1180px; margin:0 auto; padding:32px 24px 56px; }
+  .top { display:flex; justify-content:space-between; gap:24px; align-items:center; border-bottom:1px solid var(--rule); padding-bottom:18px; margin-bottom:34px; }
+  .top img { height:24px; width:auto; }
+  .crumb { font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); }
+  .hero { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr); gap:20px; }
+  .hero-main { background:var(--night); color:var(--paper); padding:clamp(28px,5vw,58px); position:relative; overflow:hidden; min-height:390px; }
+  .hero-main:before { content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(30,91,255,.22), transparent 45%), repeating-linear-gradient(125deg, rgba(249,247,241,.05) 0 1px, transparent 1px 44px); }
+  .hero-main > * { position:relative; }
+  .eyebrow { font-family:var(--mono); color:#6E96FF; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; margin-bottom:18px; }
+  h1 { font-family:var(--serif); font-size:clamp(46px,7vw,88px); line-height:.96; font-weight:300; letter-spacing:-.035em; margin:0 0 22px; }
+  h1 em { color:#6E96FF; font-style:italic; }
+  .hero-main p { max-width:720px; color:rgba(249,247,241,.68); font-size:18px; margin:0; }
+  .panel { background:var(--sheet); border:1px solid var(--rule); padding:22px; }
+  .panel h2 { font-family:var(--serif); font-weight:400; font-size:32px; line-height:1.05; margin:0 0 14px; letter-spacing:-.02em; }
+  .panel p { color:var(--body); margin:0 0 16px; }
+  .btns { display:grid; gap:10px; margin-top:18px; }
+  .btn { min-height:46px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:700; border:1px solid var(--ink); background:var(--ink); color:var(--paper); padding:12px 14px; }
+  .btn.secondary { background:transparent; color:var(--ink); border-color:var(--rule); }
+  .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:18px; }
+  .card { background:var(--sheet); border:1px solid var(--rule); padding:18px; min-height:150px; }
+  .card .n { font-family:var(--serif); font-size:34px; line-height:1; display:block; margin-bottom:14px; }
+  .card .l { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); }
+  .section { margin-top:28px; border-top:1px solid var(--ink); padding-top:18px; }
+  .section h2 { font-family:var(--serif); font-size:34px; font-weight:400; margin:0 0 12px; }
+  table { width:100%; border-collapse:collapse; background:var(--sheet); border:1px solid var(--rule); }
+  th, td { padding:14px; border-bottom:1px solid var(--rule); text-align:left; vertical-align:top; }
+  th { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); }
+  td { color:var(--body); }
+  td strong { color:var(--ink); }
+  tr:last-child td { border-bottom:none; }
+  .callout { border-left:2px solid var(--blue); background:var(--blue-soft); padding:16px 18px; color:var(--ink); margin-top:18px; }
+  .callout strong { display:block; font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+  .callout p { margin:0; color:var(--ink); }
+  @media (max-width:860px){ .hero,.grid{grid-template-columns:1fr;} .top{align-items:flex-start; flex-direction:column;} }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <img src="assets/logo-nav-dark.png" alt="Advanced Agentic Systems" />
+      <div class="crumb">Document 05 · Financial model</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">AAS financial projections</div>
+        <h1>Keep the model <em>honest.</em></h1>
+        <p>The financial workbook is the live operating model behind the business plan: assumptions, service volume, revenue build, cash flow, break-even, scenarios, and the federal pipeline tracker.</p>
+      </div>
+      <aside class="panel">
+        <h2>Open the workbook.</h2>
+        <p>This page exists so the dashboard always links to a real browser page first. The workbook itself remains the source of truth for editable financial projections.</p>
+        <div class="btns">
+          <a class="btn" href="../05 - AAS Financial Projections.xlsx">Open Excel Workbook</a>
+          <a class="btn secondary" href="aas-startup-roadmap-dashboard.html">Back to Dashboard</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="Financial model highlights">
+      <div class="card"><span class="n">36</span><span class="l">Months modeled</span></div>
+      <div class="card"><span class="n">3</span><span class="l">Scenarios: conservative, base, stretch</span></div>
+      <div class="card"><span class="n">90</span><span class="l">Day scoreboard feeds monthly review</span></div>
+    </section>
+
+    <section class="section">
+      <h2>How to use this file.</h2>
+      <table>
+        <thead><tr><th>Use</th><th>What to update</th><th>Cadence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Planning</strong></td><td>Replace placeholder assumptions with actual pricing, close rates, expenses, and cash timing as the company launches.</td><td>Weekly during launch</td></tr>
+          <tr><td><strong>Revenue review</strong></td><td>Track workshops, audits, pilots, retainers, and agency/training work against the base plan.</td><td>Monthly close</td></tr>
+          <tr><td><strong>Federal pipeline</strong></td><td>Keep targets, buyer contacts, sources-sought responses, and opportunity stages current.</td><td>Weekly during capture</td></tr>
+          <tr><td><strong>Decision support</strong></td><td>Use cash runway, break-even, and scenario tabs to decide whether to cut scope, raise price, or pursue financing.</td><td>Before major commitments</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>Operating rule</strong>
+        <p>Edit the workbook deliberately and keep a dated copy before major changes. Planning numbers become useful only when real market data replaces assumptions.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

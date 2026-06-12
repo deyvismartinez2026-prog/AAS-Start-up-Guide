@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AAS Startup Setup Checklist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+  :root { --paper:#F9F7F1; --sheet:#FFFFFF; --ink:#0E1116; --body:#565B63; --faint:#8E9097; --rule:#E4E1D5; --rule-dark:#CFCABD; --blue:#1E5BFF; --green:#0E8F55; --amber:#B87300; --red:#B42318; --night:#0A0D13; --blue-soft:rgba(30,91,255,.08); --amber-soft:rgba(184,115,0,.10); --green-soft:rgba(14,143,85,.10); --red-soft:rgba(180,35,24,.09); --serif:"Fraunces", Georgia, serif; --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5; }
+  a { color:inherit; }
+  .wrap { max-width:1220px; margin:0 auto; padding:32px 24px 64px; }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-bottom:18px; border-bottom:1px solid var(--rule); }
+  .top img { height:25px; width:auto; }
+  .crumb { font-family:var(--mono); font-size:11px; letter-spacing:.17em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .hero { display:grid; grid-template-columns:minmax(0,1.16fr) minmax(300px,.84fr); gap:18px; margin-top:28px; }
+  .hero-main { background:var(--night); color:var(--paper); min-height:430px; padding:clamp(30px,5vw,58px); position:relative; overflow:hidden; }
+  .hero-main:before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 20% 10%, rgba(30,91,255,.36), transparent 34%), repeating-linear-gradient(125deg, rgba(249,247,241,.05) 0 1px, transparent 1px 46px); }
+  .hero-main > * { position:relative; }
+  .eyebrow { font-family:var(--mono); color:var(--blue); font-weight:600; font-size:11px; letter-spacing:.20em; text-transform:uppercase; margin-bottom:16px; }
+  .hero-main .eyebrow { color:#76A0FF; }
+  h1 { margin:0 0 22px; font-family:var(--serif); font-size:clamp(46px,7vw,86px); font-weight:300; letter-spacing:-.04em; line-height:.96; }
+  h1 em { color:#76A0FF; font-style:italic; }
+  .hero-main p { margin:0; color:rgba(249,247,241,.70); max-width:760px; font-size:18px; }
+  .panel { background:var(--sheet); border:1px solid var(--rule); padding:22px; }
+  .panel h2 { margin:0 0 12px; font-family:var(--serif); font-size:32px; line-height:1.05; font-weight:400; letter-spacing:-.02em; }
+  .panel p { color:var(--body); margin:0 0 14px; }
+  .btns { display:grid; gap:10px; margin-top:16px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; border:1px solid var(--ink); background:var(--ink); color:var(--paper); text-decoration:none; padding:11px 14px; font-weight:700; }
+  .btn.secondary { background:transparent; color:var(--ink); border-color:var(--rule-dark); }
+  .section { margin-top:28px; padding-top:18px; border-top:1px solid var(--ink); }
+  .section h2 { margin:0 0 12px; font-family:var(--serif); font-size:36px; line-height:1.05; font-weight:400; letter-spacing:-.02em; }
+  .section > p { margin:0 0 16px; color:var(--body); max-width:900px; }
+  .grid { display:grid; gap:14px; }
+  .cols-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .card { background:var(--sheet); border:1px solid var(--rule); padding:18px; }
+  .card h3 { margin:0 0 8px; font-size:18px; }
+  .card p { margin:0; color:var(--body); font-size:14px; }
+  .tag { display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:8px; }
+  .privacy { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .yes { background:var(--green-soft); border-color:rgba(14,143,85,.22); }
+  .no { background:var(--red-soft); border-color:rgba(180,35,24,.20); }
+  .warn { background:var(--amber-soft); border-color:rgba(184,115,0,.22); }
+  table { width:100%; border-collapse:collapse; background:var(--sheet); border:1px solid var(--rule); }
+  th, td { border-bottom:1px solid var(--rule); padding:12px; text-align:left; vertical-align:top; }
+  th { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); }
+  td { color:var(--body); font-size:14px; }
+  td strong { color:var(--ink); }
+  tr:last-child td { border-bottom:none; }
+  .check { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+  .check li { position:relative; padding-left:28px; color:var(--body); font-size:14px; }
+  .check li:before { content:"□"; position:absolute; left:0; top:0; font-family:var(--mono); color:var(--blue); }
+  .source-list { display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+  .source-list a { color:var(--blue); text-decoration:none; }
+  .source-list a:hover { text-decoration:underline; }
+  .note { border-left:2px solid var(--blue); background:var(--blue-soft); padding:16px 18px; color:var(--ink); }
+  .note strong { display:block; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+  .note p { margin:0; color:var(--ink); }
+  .template-links { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  .template-links a { background:var(--sheet); border:1px solid var(--rule); padding:13px; text-decoration:none; font-size:14px; font-weight:700; }
+  .template-links a span { display:block; margin-top:4px; font-family:var(--mono); color:var(--faint); font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:500; }
+  @media (max-width:900px){ .hero,.privacy,.cols-2,.cols-3,.template-links{grid-template-columns:1fr;} .top{align-items:flex-start; flex-direction:column;} }
+  @media print { .btns { display:none; } .wrap { max-width:none; padding:0; } body{background:#fff;} .hero{display:block;} .hero-main{color:var(--ink); background:#fff; min-height:auto; border:1px solid var(--ink);} .hero-main:before{display:none;} .hero-main p{color:var(--body);} h1 em{color:var(--ink);} .section{break-inside:avoid;} }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <img src="assets/logo-nav-dark.png" alt="Advanced Agentic Systems" />
+      <div class="crumb">Document 07 · Startup setup checklist</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Formation · privacy · operating setup</div>
+        <h1>Make AAS real, without making your home address the company.</h1>
+        <p>This checklist fills the missing startup layer: Florida LLC setup, digital office/mail handling, EIN, banking, bookkeeping, templates, social presence, SAM.gov, VetCert, and the compliance calendar that keeps the company clean.</p>
+      </div>
+      <aside class="panel">
+        <h2>First principle.</h2>
+        <p>Set the address/privacy plan before filing anything. Public records are hard to un-ring once a home address, personal email, or personal phone gets indexed.</p>
+        <div class="btns">
+          <a class="btn" href="aas-startup-roadmap-dashboard.html">Open Dashboard</a>
+          <a class="btn secondary" href="06-90-day-action-plan.html">Open 90-Day Plan</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Privacy reality check</div>
+      <h2>Privacy means reducing exposure, not hiding from required systems.</h2>
+      <div class="privacy">
+        <div class="card yes">
+          <span class="tag">Do this</span>
+          <ul class="check">
+            <li>Use a registered agent instead of yourself as public service-of-process contact.</li>
+            <li>Use a legitimate commercial/digital office or CMRA mailbox for business mail handling.</li>
+            <li>Use a business email and VoIP number for public records and public-facing accounts.</li>
+            <li>Keep a private records folder for personal identity, VA, bank, IRS, and certification documents.</li>
+          </ul>
+        </div>
+        <div class="card no">
+          <span class="tag">Do not do this</span>
+          <ul class="check">
+            <li>Do not put your home address on Sunbiz, website footer, proposals, social profiles, or email signatures unless there is no alternative.</li>
+            <li>Do not use fake addresses. Banks, SAM.gov, IRS, payment processors, and certification programs may require real verification.</li>
+            <li>Do not let third-party “free LLC” services upsell you into unnecessary filings or use their address without understanding mail/control rules.</li>
+            <li>Do not file before an attorney/CPA/registered agent has reviewed the operating agreement/control structure for SDVOSB readiness.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="margin-top:14px;">
+        <strong>Florida-specific notes</strong>
+        <p>Sunbiz indicates a principal office address requires a street address; a P.O. Box is not acceptable for that field. Sunbiz also warns that email addresses can be public records. Keep personal contact details out of public filings wherever possible.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">90-day startup buildout</div>
+      <h2>The missing startup steps, now explicit.</h2>
+      <table>
+        <thead><tr><th>Phase</th><th>Actions</th><th>Done when</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Week 1 · privacy architecture</strong></td><td>Pick registered agent, digital office/mail provider, business phone, public email, password manager, startup records folder, and address plan.</td><td>No home address appears in the filing plan; mail workflow has an owner and escalation rule.</td></tr>
+          <tr><td><strong>Week 2 · Florida LLC</strong></td><td>Search Sunbiz name, file Articles after address plan, download confirmation, draft operating agreement, set annual report reminder.</td><td>LLC exists, documents are saved, and May 1 annual report reminder is calendared.</td></tr>
+          <tr><td><strong>Week 3 · EIN + bank</strong></td><td>Apply for EIN free directly through IRS after LLC approval, open bank account, add tax reserve, start bookkeeping and receipt capture.</td><td>EIN letter saved; checking/tax reserve live; accounting workflow is usable.</td></tr>
+          <tr><td><strong>Week 3–4 · operating stack</strong></td><td>Business email, booking page, cloud drive, e-signature, CRM/pipeline, invoice/payment workflow, website lead capture.</td><td>A prospect can find you, contact you, book you, sign, pay, and get onboarded.</td></tr>
+          <tr><td><strong>Week 3–6 · working templates</strong></td><td>Proposal, SOW, service terms placeholder, invoice, W-9 packet, kickoff agenda, discovery questionnaire, meeting notes, follow-up sequence, capability statement.</td><td>Every repeated business action has a starter template.</td></tr>
+          <tr><td><strong>Week 4–6 · SAM.gov</strong></td><td>Login.gov, SAM.gov registration, entity validation, bank EFT, NAICS/PSC, reps/certs, DSBS draft, UEI/CAGE recording.</td><td>SAM is active or actively monitored; renewal date is recorded.</td></tr>
+          <tr><td><strong>Week 6–9 · VetCert</strong></td><td>Self-check veteran ownership/control, stage operating agreement, VA docs, bank authority, resume, SAM status, then submit through MySBA Certifications.</td><td>Application submitted; examiner questions answered same day.</td></tr>
+          <tr><td><strong>Week 9–13 · market presence + compliance</strong></td><td>Social profiles, branded email signature, content calendar, supplier portals, sources-sought template, compliance calendar, access/password audit.</td><td>AAS looks real, can receive leads, can contract, and has reminders for every renewal.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Vendor stack</div>
+      <h2>Services to choose deliberately.</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3>Registered agent</h3><p>Receives legal/service-of-process mail. Confirm renewal cost, privacy posture, scan notifications, and how they handle urgent documents.</p></div>
+        <div class="card"><h3>Digital office / mailbox</h3><p>Handles routine mail scanning/forwarding. Confirm CMRA terms, address use cases, mail SLAs, and whether bank/SAM verification support is available.</p></div>
+        <div class="card"><h3>Attorney + CPA</h3><p>Attorney for operating agreement/control language; CPA for tax classification, bookkeeping, owner draws, sales-tax and local-license questions.</p></div>
+        <div class="card"><h3>Banking</h3><p>Business checking, tax reserve savings, future business credit card, and clean separation between personal and company funds.</p></div>
+        <div class="card"><h3>Insurance</h3><p>General liability, professional/E&O, cyber, and workers comp if applicable. Save COIs and renewal dates.</p></div>
+        <div class="card"><h3>Operating tools</h3><p>Email, calendar booking, cloud drive, e-signature, CRM, invoicing, form capture, password manager, backup/export routine.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Working templates</div>
+      <h2>Starter files created for you.</h2>
+      <p>These are practical working templates, not legal documents. Use them to run the setup and then have attorney/CPA review anything contractual or tax-sensitive.</p>
+      <div class="template-links">
+        <a href="startup-templates/startup-master-checklist.md">Startup Master Checklist<span>Markdown</span></a>
+        <a href="startup-templates/llc-privacy-address-plan.md">LLC Privacy Address Plan<span>Markdown</span></a>
+        <a href="startup-templates/vendor-decision-log.csv">Vendor Decision Log<span>CSV</span></a>
+        <a href="startup-templates/bank-ein-document-checklist.md">Bank + EIN Checklist<span>Markdown</span></a>
+        <a href="startup-templates/social-profile-copy.md">Social Profile Copy<span>Markdown</span></a>
+        <a href="startup-templates/client-template-index.md">Template Index<span>Markdown</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Official reference links</div>
+      <h2>Use official sources for filing and certification.</h2>
+      <ul class="source-list">
+        <li><a href="https://dos.fl.gov/sunbiz/start-business/efile/fl-llc/">Florida Sunbiz — Florida LLC filing information</a></li>
+        <li><a href="http://efile.sunbiz.org/llc_file.html">Sunbiz — File Florida LLC Articles of Organization</a></li>
+        <li><a href="https://dos.fl.gov/SunbizEmail/SunbizChange/SunbizAddressChange">Sunbiz — principal/mailing address rules</a></li>
+        <li><a href="https://efile.sunbiz.org/sbs_ar_instr.html">Sunbiz — annual report instructions and May 1 deadline</a></li>
+        <li><a href="https://www.irs.gov/businesses/employer-identification-number">IRS — apply for EIN directly and free</a></li>
+        <li><a href="https://sam.gov/content/entity-registration">SAM.gov — entity registration and UEI</a></li>
+        <li><a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs">SBA — Veteran contracting assistance / VetCert</a></li>
+        <li><a href="https://www.fincen.gov/news/news-releases/fincen-removes-beneficial-ownership-reporting-requirements-us-companies-and-us">FinCEN — current BOI interim final rule for U.S. companies</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

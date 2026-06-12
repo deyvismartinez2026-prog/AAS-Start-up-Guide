@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AAS Business Plan</title>
+<link rel="stylesheet" href="aas-print.css">
+<style>
+  .ladder { border-left: 1px solid var(--rule); }
+  .lrow { display: flex; gap: 0.16in; padding: 0.10in 0 0.10in 0.16in; border-bottom: 1px solid var(--rule); }
+  .lrow:last-child { border-bottom: none; }
+  .lrow .ln { font-family: var(--mono); font-size: 7pt; color: var(--blue); flex: 0 0 0.34in; padding-top: 0.02in; }
+  .lrow h4 { font-size: 9.6pt; font-weight: 600; }
+  .lrow p { font-size: 8.3pt; margin: 0.015in 0 0; }
+  .lrow .pr { flex: 0 0 1.18in; text-align: right; font-family: var(--mono); font-size: 7.6pt; color: var(--ink); padding-top: 0.03in; }
+  .swot { display: grid; grid-template-columns: 1fr 1fr; gap: 0.18in; }
+  .swot .q { border: 1px solid var(--rule); background: var(--sheet); padding: 0.14in 0.16in; }
+  .swot .q h4 { font-family: var(--mono); font-size: 7.4pt; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.07in; }
+  .swot .q ul.dash li { font-size: 8.2pt; margin-bottom: 0.04in; }
+  .kpi { border-top: 1px solid var(--ink); padding: 0.06in 0; }
+  .kpi .h { font-family: var(--mono); font-size: 6.8pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
+  .src { font-size: 7.6pt; color: var(--body); margin-bottom: 0.055in; line-height: 1.4; }
+  .src .u { font-family: var(--mono); font-size: 6.9pt; color: var(--blue-deep); word-break: break-all; }
+  .mix { display: flex; height: 0.16in; margin: 0.04in 0 0.02in; }
+  .mix div { height: 100%; }
+</style>
+</head>
+<body>
+
+<!-- ============================== PAGE 1 — COVER ============================== -->
+<div class="page night">
+  <img src="assets/logo-nav.png" alt="Advanced Agentic Systems" style="height:0.34in; margin-top:0.25in;">
+  <div style="margin-top:2.1in;">
+    <div class="eyebrow">Business plan · Confidential</div>
+    <h1 class="display" style="font-size:40pt; color:#F9F7F1;">Modernize the way<br>work <em>moves.</em></h1>
+    <p style="font-size:11.5pt; color:var(--night-body); max-width:5.6in; margin-top:0.18in;">Advanced Agentic Systems is an operating partner for measurable AI execution — built as a service-disabled veteran-owned small business serving commercial operators and federal missions.</p>
+  </div>
+  <div style="position:absolute; bottom:1.35in; left:0.82in;">
+    <p style="font-family:var(--mono); font-size:8pt; letter-spacing:0.14em; color:var(--night-body); text-transform:uppercase;">Map the workflow. Connect the tools. Expose the truth.</p>
+  </div>
+  <div class="cover-meta">
+    <span>Prepared by Deyvis Martinez · Founder &amp; CEO</span>
+    <span>June 2026 · v1.0</span>
+    <span>SDVOSB — certification planned</span>
+  </div>
+</div>
+
+<!-- ============================== PAGE 2 — NOTICE ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Advanced Agentic Systems — Business Plan</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">About this document</div>
+  <h2 class="sec">How to read this plan.</h2>
+  <p>This plan is the operating thesis for Advanced Agentic Systems (AAS): what the company sells, why the market wants it now, how it reaches buyers, and what the first three years look like in numbers. It is written to be read by three audiences — the founder as an execution playbook, lenders and counselors (SBA, VBOC, VR&amp;E) as a credibility document, and future teaming partners as evidence of operating discipline.</p>
+  <p>It is paired with three companion documents: the <strong>SDVOSB Launch Guide</strong> (the step-by-step order of operations), the <strong>Financial Projections workbook</strong> (the live model behind Section 10), and the <strong>90-Day Action Plan</strong> (the near-term execution calendar).</p>
+
+  <div class="sp-s"></div>
+  <div class="callout">
+    <span class="tag">Placeholder convention</span>
+    <p>Dotted-underline items like <span class="fill">[City, State]</span> are personal or pending details to fill in before sharing externally. Everything else is ready as written.</p>
+  </div>
+
+  <div class="sp-s"></div>
+  <table class="tbl">
+    <tr><th style="width:1.6in;">Field</th><th>Value</th></tr>
+    <tr><td class="k">Document</td><td>Business plan, version 1.0</td></tr>
+    <tr><td class="k">Prepared</td><td>June 2026</td></tr>
+    <tr><td class="k">Owner</td><td>Deyvis Martinez, Founder &amp; CEO</td></tr>
+    <tr><td class="k">Status</td><td>Working document — review quarterly, revise annually</td></tr>
+    <tr><td class="k">Distribution</td><td>Confidential. Share with advisors, lenders, and certifying agencies as needed.</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <div class="watch">
+    <span class="tag">Disclaimer</span>
+    <p>This plan and its companion documents are planning materials, not legal, tax, accounting, or investment advice. Regulatory facts (SDVOSB rules, thresholds, program terms) were verified against the sources in Appendix C as of June 2026 and change over time — confirm current rules with the SBA, your CPA, and your attorney before acting. Financial figures are founder planning assumptions, labeled as sample placeholders, not guarantees of performance.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 3 — TOC ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Advanced Agentic Systems — Business Plan</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Contents</div>
+  <h2 class="sec" style="margin-bottom:0.2in;">What this plan covers.</h2>
+  <div class="toc-row"><span class="n">01</span><span class="t">Executive summary</span><span class="dots"></span><span class="p">04</span></div>
+  <div class="toc-row"><span class="n">02</span><span class="t">Company overview</span><span class="dots"></span><span class="p">06</span></div>
+  <div class="toc-row"><span class="n">03</span><span class="t">Services &amp; products — the offer ladder</span><span class="dots"></span><span class="p">08</span></div>
+  <div class="toc-row"><span class="n">04</span><span class="t">The platform moat — compounding IP</span><span class="dots"></span><span class="p">12</span></div>
+  <div class="toc-row"><span class="n">05</span><span class="t">Market analysis — problem, federal demand, commercial demand</span><span class="dots"></span><span class="p">13</span></div>
+  <div class="toc-row"><span class="n">06</span><span class="t">Competition &amp; positioning</span><span class="dots"></span><span class="p">16</span></div>
+  <div class="toc-row"><span class="n">07</span><span class="t">Go-to-market — two engines, one system</span><span class="dots"></span><span class="p">17</span></div>
+  <div class="toc-row"><span class="n">08</span><span class="t">Operations &amp; delivery</span><span class="dots"></span><span class="p">21</span></div>
+  <div class="toc-row"><span class="n">09</span><span class="t">Organization &amp; hiring</span><span class="dots"></span><span class="p">22</span></div>
+  <div class="toc-row"><span class="n">10</span><span class="t">Financial plan</span><span class="dots"></span><span class="p">23</span></div>
+  <div class="toc-row"><span class="n">11</span><span class="t">SWOT analysis</span><span class="dots"></span><span class="p">26</span></div>
+  <div class="toc-row"><span class="n">12</span><span class="t">Risks &amp; mitigations</span><span class="dots"></span><span class="p">27</span></div>
+  <div class="toc-row"><span class="n">13</span><span class="t">Milestones &amp; KPIs</span><span class="dots"></span><span class="p">28</span></div>
+  <div class="toc-row"><span class="n">A</span><span class="t">Appendix A — SDVOSB fact sheet</span><span class="dots"></span><span class="p">29</span></div>
+  <div class="toc-row"><span class="n">B</span><span class="t">Appendix B — NAICS codes &amp; DSBS keywords</span><span class="dots"></span><span class="p">30</span></div>
+  <div class="toc-row"><span class="n">C</span><span class="t">Appendix C — Sources</span><span class="dots"></span><span class="p">31</span></div>
+  <div class="sp-m"></div>
+  <div class="pull">Start with proof. Scale with confidence.</div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 4 — EXEC SUMMARY 1 ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 01 — Executive summary</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">01 · </span>Executive summary</div>
+  <h1 class="display" style="font-size:24pt;">The operating partner for measurable AI execution.</h1>
+  <p class="lede">Advanced Agentic Systems modernizes how work moves across teams, systems, decisions, and growth channels. We are not an AI readiness consultancy, a chatbot builder, or a dev shop. Every engagement starts with evidence and ends with an operating decision.</p>
+
+  <h3 class="sub">The problem</h3>
+  <p>Organizations are buying AI faster than they can absorb it. Tools get licensed, pilots get demoed, and the work still moves by hand — status chased in meetings, decisions routed by memory, reports rebuilt in spreadsheets. The cost of that friction is real but invisible, because nobody has mapped the workflow or priced the waste. As AI-assisted development gets cheaper every quarter, the scarce capability is no longer building automation. It is knowing what to build, proving what it is worth, and owning adoption until the result is measured.</p>
+
+  <h3 class="sub">The answer</h3>
+  <p>AAS sells a disciplined ladder, not a menu of automations. A <strong>Workshop</strong> builds trust and surfaces hidden demand. The <strong>Foundation</strong> audit — four weeks, fixed fee — maps how work actually moves, prices the friction in dollars, and ranks what to fix first. The <strong>Momentum</strong> pilot builds the first production workflow from that roadmap. The <strong>Operating Partner</strong> retainer keeps results compounding: monitoring, optimization, expansion, quarterly operating reviews. A parallel <strong>Agentic AI Agency</strong> line builds the brand, web, chat, voice, marketing, and CRM systems that growing companies run on.</p>
+
+  <h3 class="sub">Two engines, one company</h3>
+  <p><strong>Engine one is commercial.</strong> Service businesses and mid-market operators buy audits and growth systems now, generate cash in weeks, and build the proof library. <strong>Engine two is federal.</strong> As a service-disabled veteran-owned small business, AAS gains access to a market that set aside $28.6 billion for SDVOSB firms in FY2025 — and where the government missed its own 5% goal, leaving agencies under pressure to find certified, capable vendors. Commercial proof feeds federal credibility. Federal scale feeds enterprise value.</p>
+
+  <div class="sp-s"></div>
+  <div class="stats">
+    <div class="stat hot"><span class="n">$25K</span><span class="l">Fixed-fee flagship audit</span></div>
+    <div class="stat"><span class="n">$28.6B</span><span class="l">FY25 federal SDVOSB awards</span></div>
+    <div class="stat"><span class="n">12 days</span><span class="l">Avg. SBA VetCert processing</span></div>
+    <div class="stat"><span class="n">$5M</span><span class="l">SDVOSB sole-source ceiling</span></div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 5 — EXEC SUMMARY 2 ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 01 — Executive summary</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <h3 class="sub">The moat</h3>
+  <p>Every engagement runs through the AAS Operational Intelligence Platform — a proprietary delivery system that captures friction taxonomies, workflow maps, cost assumptions, opportunity scores, and before/after outcomes as structured data. Each audit makes the next one faster, more defensible, and easier to sell. The platform graduates from internal workbench (v1, built) to client portal and benchmarking (v2) to a SaaS and GovCloud-deployable federal posture (v3). Services feed the platform. The platform compounds the services.</p>
+
+  <h3 class="sub">The founder</h3>
+  <p>Deyvis Martinez is a service-disabled veteran and the architect of the AAS method: the brand system, the audit playbook, the ROI mathematics, and the delivery platform. The company qualifies for SDVOSB certification through his 100% ownership and control, with certification through SBA VetCert planned in the first sixty days of operation.</p>
+
+  <h3 class="sub">The numbers</h3>
+  <p>The model is founder-led and cash-flow funded: roughly <strong>$11,650 in startup costs</strong> against a <strong>$20,000 owner contribution</strong>, break-even on cumulative net income in <strong>month three</strong>, and no required outside capital. An SBA Express line (veteran fee relief: no upfront guaranty fee) remains available as an optional buffer, not a dependency.</p>
+  <div class="sp-xs"></div>
+  <table class="tbl">
+    <tr><th></th><th class="num">Year 1</th><th class="num">Year 2</th><th class="num">Year 3</th></tr>
+    <tr><td class="k">Revenue — conservative (0.55×)</td><td class="num">$207,600</td><td class="num">$652,300</td><td class="num">$1,123,900</td></tr>
+    <tr><td class="k">Revenue — base plan</td><td class="num">$377,500</td><td class="num">$1,186,000</td><td class="num">$2,043,500</td></tr>
+    <tr><td class="k">Revenue — stretch (1.40×)</td><td class="num">$528,500</td><td class="num">$1,660,400</td><td class="num">$2,860,900</td></tr>
+    <tr><td class="k">Gross margin (base)</td><td class="num">88%</td><td class="num">85%</td><td class="num">85%</td></tr>
+    <tr><td class="k">Net income, pre-tax (base)</td><td class="num">$271,700</td><td class="num">$739,400</td><td class="num">$1,178,000</td></tr>
+    <tr><td class="k">Federal share of revenue (base)</td><td class="num">6%</td><td class="num">14%</td><td class="num">23%</td></tr>
+  </table>
+  <p class="micro">Founder planning assumptions from the companion workbook (sample placeholders, not guarantees). Net income is pre-tax, after a modest owner draw; see Section 10.</p>
+
+  <h3 class="sub">What this plan asks for</h3>
+  <ul class="dash">
+    <li><strong>From the founder:</strong> ruthless package discipline — one workflow, one sponsor, one decision call per engagement; certification and registrations completed in the order the Launch Guide prescribes.</li>
+    <li><strong>From advisors and counselors:</strong> pressure-test the conversion assumptions in Section 7 and the pricing posture in Section 3.</li>
+    <li><strong>From lenders (if engaged):</strong> an SBA Express line of up to $50K as working-capital insurance against federal payment cycles. The base plan does not depend on it.</li>
+  </ul>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 6 — COMPANY ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 02 — Company overview</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">02 · </span>Company overview</div>
+  <h1 class="display" style="font-size:24pt;">Built for operators,<br>not software theater.</h1>
+
+  <table class="tbl">
+    <tr><th style="width:1.7in;">Fact</th><th>Detail</th></tr>
+    <tr><td class="k">Legal name</td><td><span class="fill">[Advanced Agentic Systems LLC]</span> — to be formed; see Launch Guide, Phase 1</td></tr>
+    <tr><td class="k">Structure</td><td>Single-member LLC in <span class="fill">[State]</span>; S-corp election evaluated with CPA once net income stabilizes</td></tr>
+    <tr><td class="k">Ownership</td><td>100% Deyvis Martinez — service-disabled veteran (meets the 51% SDVOSB threshold with margin)</td></tr>
+    <tr><td class="k">Certifications</td><td>SDVOSB via SBA VetCert — planned within 60 days of formation; state veteran certifications to follow</td></tr>
+    <tr><td class="k">Primary NAICS</td><td>541512 — Computer Systems Design Services ($34M size standard; AAS is small by two orders of magnitude)</td></tr>
+    <tr><td class="k">Founded</td><td>2026</td></tr>
+    <tr><td class="k">Headquarters</td><td><span class="fill">[City, State]</span> — remote-first delivery</td></tr>
+    <tr><td class="k">Web</td><td>aas-fable.vercel.app · production domain <span class="fill">[domain]</span></td></tr>
+  </table>
+
+  <div class="grid2" style="margin-top:0.22in;">
+    <div class="cell">
+      <span class="cidx">Mission</span>
+      <p style="font-size:9.4pt;">Give leadership true visibility into how work moves, what it costs, and what to fix first — then build and run the systems that fix it.</p>
+    </div>
+    <div class="cell">
+      <span class="cidx">Vision</span>
+      <p style="font-size:9.4pt;">The benchmark operating layer for AI execution: every engagement measured, every claim defensible, every client running on systems they control.</p>
+    </div>
+  </div>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">Operating values</div>
+  <div class="grid2">
+    <div class="cell"><span class="cidx">V·01</span><h4>Evidence first</h4><p>No speculative transformation decks. Conservative math, documented sources, defensible ROI.</p></div>
+    <div class="cell"><span class="cidx">V·02</span><h4>Systems over headcount</h4><p>Work should move through an operating layer — context, routing, alerts, reporting — not through heroics.</p></div>
+    <div class="cell"><span class="cidx">V·03</span><h4>Human-in-the-loop</h4><p>AI drafts; people approve. Numbers come from auditable models, never from generative output.</p></div>
+    <div class="cell"><span class="cidx">V·04</span><h4>Reputation before extraction</h4><p>The durable asset is trust. The work must feel serious, measured, and operationally real.</p></div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 7 — FOUNDER ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 02 — Company overview</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Founder &amp; ownership</div>
+  <h2 class="sec">Founder-led by design.</h2>
+  <p><strong>Deyvis Martinez — Founder &amp; CEO.</strong> Service-disabled veteran, <span class="fill">[branch, years of service]</span>. Deyvis built AAS from doctrine outward: the brand and design system, the seven-phase audit methodology, the canonical ROI formulas, and the Operational Intelligence Platform that productizes delivery. The discipline the company sells — clear ownership, standardized workflows, measured outcomes — is the discipline it was built with. Until the first hires land, the founder owns positioning, sales, diagnosis, and delivery, which is deliberate: the pattern must be sharp before it is delegated.</p>
+
+  <div class="callout">
+    <span class="tag">SDVOSB eligibility posture</span>
+    <p>13 CFR Part 128 requires direct, unconditional ownership of at least 51% by one or more service-disabled veterans, control of day-to-day and long-term decisions, the highest officer position, and full-time devotion to the business. AAS is structured to meet every test with margin: 100% ownership, sole managing member, no outside control provisions. The operating agreement is drafted to preserve this (see Launch Guide, Phase 1).</p>
+  </div>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">Advisory bench — engaged, not employed</div>
+  <table class="tbl">
+    <tr><th style="width:1.85in;">Advisor</th><th>Role</th><th style="width:0.9in;">Cost</th></tr>
+    <tr><td class="k">VBOC business counselor</td><td>Business plan review, VR&amp;E coordination, lender introductions</td><td class="num">Free (SBA)</td></tr>
+    <tr><td class="k">APEX Accelerator counselor</td><td>Government market entry, bid-match, proposal reviews</td><td class="num">Free (DoD)</td></tr>
+    <tr><td class="k">SCORE mentor</td><td>Standing monthly operating review until first hire</td><td class="num">Free (SBA)</td></tr>
+    <tr><td class="k">CPA</td><td>Entity election, loaded-rate buildup, tax set-asides, federal cost accounting readiness</td><td class="num">Paid</td></tr>
+    <tr><td class="k">Contracts attorney</td><td>Operating agreement control language, MSA/SOW pack, teaming agreements</td><td class="num">Paid</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Governance rhythm</h3>
+  <p>One weekly pipeline review, one monthly close with the CPA's bookkeeping, one quarterly operating review against this plan's KPIs (Section 13). The same cadence AAS sells to Operating Partner clients, applied to itself from month one.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 8 — SERVICES OVERVIEW ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 03 — Services &amp; products</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">03 · </span>Services &amp; products</div>
+  <h1 class="display" style="font-size:24pt;">One ladder. <em>No menu.</em></h1>
+  <p class="lede">Early AI agencies fail by building whatever the prospect asks for. AAS packages the problem before packaging the solution: one primary workflow, one start and end point, one operating sponsor, one financial model, one recommended build path, one decision call.</p>
+
+  <div class="ladder">
+    <div class="lrow">
+      <span class="ln">L·00</span>
+      <div style="flex:1;"><h4>Workshop — relationship entry</h4><p>60–120 minute executive or operator session. Output: AI opportunity map, workflow shortlist, recommended audit scope. Builds the funnel before capacity is needed.</p></div>
+      <span class="pr">$1.5K–$3.5K<br><span class="faint">or strategic free</span></span>
+    </div>
+    <div class="lrow">
+      <span class="ln">L·01</span>
+      <div style="flex:1;"><h4>Foundation — Workflow Intelligence Audit</h4><p>Four weeks, fixed fee. Friction mapping, revenue-leakage analysis, six-factor opportunity scoring, five-artifact executive readout, implementation roadmap. The flagship.</p></div>
+      <span class="pr">$25K<br><span class="faint">fixed</span></span>
+    </div>
+    <div class="lrow">
+      <span class="ln">L·02</span>
+      <div style="flex:1;"><h4>Momentum — Agentic Workflow Pilot</h4><p>Six to ten weeks. The top-ranked workflow from the audit goes live: integrations, routing logic, dashboards, operator training, 30-day stabilization.</p></div>
+      <span class="pr">$40K–$90K<br><span class="faint">fixed + aligned</span></span>
+    </div>
+    <div class="lrow">
+      <span class="ln">L·03</span>
+      <div style="flex:1;"><h4>Operating Partner — Managed AI Operations</h4><p>Twelve-month partnership. Monitoring, optimization, stakeholder support, workflow expansion, quarterly operating reviews, benchmark comparison.</p></div>
+      <span class="pr">$4K–$12K/mo<br><span class="faint">annual</span></span>
+    </div>
+  </div>
+
+  <div class="sp-s"></div>
+  <div class="grid2">
+    <div class="cell">
+      <span class="cidx">Parallel line — Agentic AI Agency</span>
+      <p>Brand creation, websites, AI chatbots, voice agents, marketing automation, CRM — built and run as one growth system for commercial clients. Builds $12K–$35K; care plans $1K–$2.5K/mo.</p>
+    </div>
+    <div class="cell">
+      <span class="cidx">Parallel line — AI Training &amp; Onboarding</span>
+      <p>Two-to-eight-week role-based adoption programs: playbooks, guardrails, manager dashboards. Typically $8K–$20K. Frequent entry point for federal training buys.</p>
+    </div>
+  </div>
+  <p class="micro" style="margin-top:0.08in;">Pricing posture: value-based and fixed-fee. Ranges are planning anchors (sample placeholders), set per engagement against recovered capacity and payback period — never hourly.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 9 — FOUNDATION DETAIL ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 03 — Services &amp; products</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">L·00 / L·01 — The front of the funnel</div>
+  <h2 class="sec">Workshop and Foundation: earn the right to build.</h2>
+
+  <h3 class="sub">Workshop — build the funnel before you need it</h3>
+  <p>The workshop is not the business; it creates qualified demand for Foundation. AAS teaches the market how to find friction and price it, builds executive relationships, and leaves each session with one workflow candidate and one named sponsor. Two industry outlines exist at launch — CPA firms and generic service businesses — with more presets added as the platform taxonomy grows.</p>
+  <ul class="dash">
+    <li>Qualification checklist applied in every session: pain, sponsor, workflow scope, budget, urgency, data access.</li>
+    <li>Conversion target: one in three workshops yields a qualified audit conversation within 60 days (planning assumption, tracked from day one).</li>
+  </ul>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Foundation — the productized diagnostic</h3>
+  <p>Foundation packages what clients cannot easily do themselves: objective workflow truth, a financial model of their own friction, and implementation priority. Four weeks, fixed $25K, senior-led. Every readout ends with a pre-briefed sponsor and a decision call within five business days.</p>
+  <table class="tbl">
+    <tr><th style="width:1.45in;">Week</th><th>Activity</th><th>Artifact</th></tr>
+    <tr><td class="k">Week 1 — Map</td><td>Stakeholder interviews, system inventory, workflow observation</td><td>Workflow map, friction inventory</td></tr>
+    <tr><td class="k">Week 2 — Measure</td><td>Frequency sampling, loaded-cost capture, leakage analysis</td><td>Cost-of-friction model</td></tr>
+    <tr><td class="k">Week 3 — Score</td><td>Six-factor opportunity scoring, recovery assumptions, scenarios</td><td>Ranked opportunity board</td></tr>
+    <tr><td class="k">Week 4 — Decide</td><td>Executive readout, roadmap, pilot scope, decision call</td><td>Five-artifact readout + roadmap</td></tr>
+  </table>
+
+  <div class="callout">
+    <span class="tag">Why clients pay for diagnosis</span>
+    <p>Anyone can prototype an automation now. What leadership cannot get internally is defensible math: loaded hourly cost (never billing rate), leakage separated from labor waste, documented sources for every friction instance, and conservative-versus-optimistic recovery scenarios. That is the audit's contract with the truth — and the reason it converts.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 10 — MOMENTUM / OPERATING PARTNER ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 03 — Services &amp; products</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">L·02 / L·03 — Where value compounds</div>
+  <h2 class="sec">Momentum and Operating Partner: own the outcome.</h2>
+
+  <h3 class="sub">Momentum — sold as operational recovery, not development</h3>
+  <p>The pilot exists because development alone is commoditizing. Momentum is scoped from the audit's top-ranked opportunity, priced fixed against the modeled recovery, and finished only when the workflow is live, adopted, and measured. A success-aligned component is added selectively — only where the measurement baseline is strong enough to defend it.</p>
+  <ul class="dash">
+    <li>Scope: one production workflow — integrations, routing logic, alerts, dashboards, operator training.</li>
+    <li>Includes a 30-day stabilization window with adoption tracking and tuning.</li>
+    <li>Exit artifact: before/after snapshot in the platform — the proof object that sells the retainer and the next audit.</li>
+  </ul>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Operating Partner — the recurring accountable layer</h3>
+  <p>After a successful pilot, project-by-project buying is more expensive for the client than a standing operating partnership. The retainer is priced on operating depth and workflow portfolio, not a pile of tasks: monitoring and tuning, stakeholder support, new workflow expansion, quarterly operating reviews against benchmarks. Annual contract preferred.</p>
+
+  <div class="stats">
+    <div class="stat hot"><span class="n">60/40</span><span class="l">Pilot revenue recognition, start / following month</span></div>
+    <div class="stat"><span class="n">12 mo</span><span class="l">Standard operating partnership term</span></div>
+    <div class="stat"><span class="n">$60K</span><span class="l">Monthly recurring revenue, Dec Y3 (base plan)</span></div>
+  </div>
+
+  <div class="sp-s"></div>
+  <div class="watch">
+    <span class="tag">Pricing principles — non-negotiable</span>
+    <p>Do not sell hours. Price against operational value with conservative math. Separate diagnostic from build: Foundation earns the right to recommend Momentum; Momentum earns the right to become Operating Partner. Performance pricing only where the system and baseline can defend it.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 11 — AGENCY / TRAINING ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 03 — Services &amp; products</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Parallel lines — Agency &amp; enablement</div>
+  <h2 class="sec">The growth engine and the adoption engine.</h2>
+
+  <h3 class="sub">Agentic AI Agency — build, then run</h3>
+  <p>AAS creates or rebrands companies, then stands up the always-on growth system that takes them to market. The client gets a working operation they control, not a folder of deliverables. Six modules, wired together and run as one:</p>
+  <div class="grid3">
+    <div class="cell"><span class="cidx">A·01</span><h4>Brand creation &amp; rebranding</h4><p>Identity, positioning, naming, messaging, visual systems.</p></div>
+    <div class="cell"><span class="cidx">A·02</span><h4>Websites &amp; landing pages</h4><p>Fast, high-converting web tuned to turn visitors into booked calls.</p></div>
+    <div class="cell"><span class="cidx">A·03</span><h4>AI chatbots</h4><p>Capture, qualify, answer, and book around the clock, with handoff.</p></div>
+    <div class="cell"><span class="cidx">A·04</span><h4>AI voice agents</h4><p>Inbound and outbound calls, booking, reminders, follow-up.</p></div>
+    <div class="cell"><span class="cidx">A·05</span><h4>Marketing automation</h4><p>Campaigns, content, nurture sequences that stay on brand.</p></div>
+    <div class="cell"><span class="cidx">A·06</span><h4>CRM &amp; pipeline automation</h4><p>Pipelines, reminders, reactivation, reporting. Nothing stalls.</p></div>
+  </div>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">AI Training &amp; Onboarding — adoption as a product</h3>
+  <p>The right move when a client has invested in AI tools but adoption is uneven, ad hoc, or stuck with a few power users. Role-based curricula, prompt and tool playbooks, governance guardrails, and manager-level dashboards. In the federal market, training is a natural early purchase: small dollar, low risk, easy to buy under the simplified acquisition threshold — and it builds the relationship that leads to audits and pilots.</p>
+
+  <div class="callout">
+    <span class="tag">How the lines reinforce</span>
+    <p>Agency clients become Operating Partner candidates once their growth system runs. Training cohorts surface workflow pain that becomes audit scope. Every line feeds the ladder; nothing is sold as a one-off.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 12 — PLATFORM ============================== -->
+<div class="page night">
+  <div class="band"><span class="doc" style="color:var(--night-faint);">Section 04 — The platform moat</span><img src="assets/logo-nav.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx" style="color:var(--night-faint);">04 · </span>The platform moat</div>
+  <h1 class="display" style="font-size:24pt;">Services feed the platform.<br>The platform <em>compounds.</em></h1>
+  <p class="lede" style="color:rgba(249,247,241,.85);">The AAS Operational Intelligence Platform is the productized delivery layer for the audit — and the strategic asset behind the whole company. It captures the method, the evidence, the math, the readout, and eventually the benchmark layer.</p>
+
+  <table class="tbl">
+    <tr><th style="width:0.85in;">Version</th><th style="width:1.85in;">Posture</th><th>What it unlocks</th></tr>
+    <tr><td class="k">v1 — built</td><td>Solo consultant workbench</td><td>Seven-phase audit, six-factor scoring, live readout, immutable snapshots, share-by-link. Audit delivery in under 30 minutes of working time once data is in hand.</td></tr>
+    <tr><td class="k">v2</td><td>Team + client portal</td><td>Multi-consultant collaboration, branded read-only client views, snapshot comparison, portfolio benchmarking across engagements.</td></tr>
+    <tr><td class="k">v3</td><td>SaaS / white-label / federal</td><td>Partner-consultant white-labeling, tenant isolation, GovCloud-deployable build path for federal environments.</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">What the data asset accumulates</div>
+  <div class="grid3">
+    <div class="cell" style="border-top-color:rgba(249,247,241,.8);"><h4 style="color:#F9F7F1;">Friction taxonomy</h4><p style="color:var(--night-body);">Canonicalized, industry-tagged patterns of where work breaks.</p></div>
+    <div class="cell" style="border-top-color:rgba(249,247,241,.8);"><h4 style="color:#F9F7F1;">Cost &amp; recovery models</h4><p style="color:var(--night-body);">Loaded-cost math and recovery assumptions, refined per engagement.</p></div>
+    <div class="cell" style="border-top-color:rgba(249,247,241,.8);"><h4 style="color:#F9F7F1;">Outcome benchmarks</h4><p style="color:var(--night-body);">Before/after snapshots that price the next engagement with evidence.</p></div>
+  </div>
+
+  <div class="sp-s"></div>
+  <p style="color:var(--night-body);">Integrity rules are product features: AI never writes a numeric field; numbers trace to documented sources; published snapshots are immutable. In a federal market wary of AI hype, auditability is the differentiator — and the platform's GovCloud path (v3) is the long-term federal wedge.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 13 — MARKET: PROBLEM ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 05 — Market analysis</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">05 · </span>Market analysis</div>
+  <h1 class="display" style="font-size:24pt;">Why now.</h1>
+
+  <div class="grid2">
+    <div class="cell">
+      <span class="cidx">Before</span>
+      <h4>Work waits for people</h4>
+      <p>Teams chase status, route decisions, and rebuild reports by hand. AI tools are licensed but sit outside the operating model. Pilots demo well and die in adoption.</p>
+    </div>
+    <div class="cell">
+      <span class="cidx">After</span>
+      <h4>Systems move the work</h4>
+      <p>Context, routing, alerts, and reporting run through one operating layer. Leadership sees delivery, risk, and throughput live. AI executes inside governance, with people in the loop.</p>
+    </div>
+  </div>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Three shifts converge in 2026</h3>
+  <ol class="num">
+    <li><strong>Development commoditizes.</strong> AI-assisted building gets cheaper and faster every quarter. Clients can prototype themselves; the durable value moves to diagnosis, prioritization, adoption, and accountable operation. AAS is built on the value side of that line.</li>
+    <li><strong>The market matures from excitement to evidence.</strong> Buyers have been burned by pilots that never reached production. Procurement now asks for measured outcomes, governance, and human-in-the-loop controls — exactly the AAS posture of conservative math and auditable readouts.</li>
+    <li><strong>Certified veteran capacity is scarce precisely when demand for it is mandated.</strong> The government raised its SDVOSB goal to 5% and missed it in FY2025 — agencies need certified, AI-capable vendors they can actually award to.</li>
+  </ol>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">What better workflows are worth</h3>
+  <p>Public research and public-sector automation reporting indicate the recoverable capacity (figures vary by organization, scope, adoption, and starting point):</p>
+  <div class="stats">
+    <div class="stat"><span class="n">14%</span><span class="l">Avg. productivity lift with AI assistance</span></div>
+    <div class="stat"><span class="n">34%</span><span class="l">Lift for newer workers</span></div>
+    <div class="stat"><span class="n">1.5M</span><span class="l">Hours created by public-sector automation</span></div>
+    <div class="stat hot"><span class="n">2.5×</span><span class="l">Automations deployed, year over year</span></div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 14 — MARKET: FEDERAL ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 05 — Market analysis</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Federal demand — the SDVOSB advantage</div>
+  <h2 class="sec">A mandated market that just missed its own target.</h2>
+
+  <div class="stats">
+    <div class="stat hot"><span class="n">$28.6B</span><span class="l">FY25 federal awards to SDVOSBs</span></div>
+    <div class="stat"><span class="n">5%</span><span class="l">Government-wide SDVOSB goal (raised from 3%)</span></div>
+    <div class="stat"><span class="n">4.7%</span><span class="l">FY25 actual — first miss since 2011</span></div>
+    <div class="stat"><span class="n">23.6%</span><span class="l">VA prime dollars to SDVOSBs, FY24</span></div>
+  </div>
+
+  <div class="sp-s"></div>
+  <p>Congress raised the government-wide SDVOSB prime contracting goal from 3% to 5% in the FY2024 NDAA. In FY2025 agencies awarded roughly $28.6 billion to SDVOSBs across some 52,000 contract actions — and still fell over $2 billion short of the goal. A miss is pressure: contracting officers and OSDBU offices are actively hunting for certified SDVOSBs they can award to, especially in capability areas where few exist. Agentic AI is exactly such an area.</p>
+
+  <h3 class="sub">The AI spending wave</h3>
+  <p>The Department of Defense requested <strong>$13.4 billion for AI and autonomous systems in FY2026</strong> — its first dedicated AI budget line — while federal AI contracts grew from 472 in 2022 to over 1,700 in 2026, and combined federal AI spending (procurement, R&amp;D, infrastructure) crossed $100 billion. Critically for AAS, most of this is not exotic R&amp;D: it is workflow automation, document processing, decision support, and adoption — the unglamorous middle where AAS operates.</p>
+
+  <h3 class="sub">Structural advantages available to AAS once certified</h3>
+  <table class="tbl">
+    <tr><th style="width:2.0in;">Mechanism</th><th>What it means</th></tr>
+    <tr><td class="k">SDVOSB set-asides</td><td>Competitions restricted to certified SDVOSBs when two or more are expected to bid (the "rule of two")</td></tr>
+    <tr><td class="k">Sole-source awards</td><td>Direct awards up to $5M (services) / $8.5M (manufacturing) where only one capable SDVOSB is identified — FAR 19.1406</td></tr>
+    <tr><td class="k">VA Vets First priority</td><td>By statute, VA puts SDVOSBs first in its contracting order of priority (VAAR 819.70) — the deepest veteran market in government</td></tr>
+    <tr><td class="k">OASIS+ SDVOSB track</td><td>GSA's flagship services vehicle opened continuous on-ramping in January 2026, including an SDVOSB family with Management &amp; Advisory and Technical &amp; Analytical domains</td></tr>
+    <tr><td class="k">Subcontracting demand</td><td>Large primes carry SDVOSB subcontracting goals on major programs and actively recruit certified partners</td></tr>
+  </table>
+  <p class="micro">Sources: Appendix C. Figures as reported for FY2024–FY2026; verify current thresholds at acquisition.gov before bidding.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 15 — MARKET: COMMERCIAL + TAM ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 05 — Market analysis</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Commercial demand &amp; addressable market</div>
+  <h2 class="sec">The cash engine: operators who feel the friction weekly.</h2>
+  <p>The commercial wedge is deliberately narrow at launch: CPA firms (full industry preset built) and generic service businesses (minimal preset built), expanding by preset as the platform taxonomy grows — law, healthcare practices, agencies, PMO teams, logistics, field services. These are owner-led organizations with real payroll, visible leakage, and short decision chains: the audit pays for itself out of one recovered workflow, and the decision-maker sits in the readout.</p>
+
+  <h3 class="sub">Addressable market, built bottom-up</h3>
+  <p>AAS sizes its market by method, not by quoting trillion-dollar analyst figures. The logic is transparent and editable in the workbook:</p>
+  <table class="tbl">
+    <tr><th style="width:1.0in;">Layer</th><th>Definition</th><th style="width:1.5in;" class="num">Planning estimate</th></tr>
+    <tr><td class="k">TAM</td><td>US organizations buying AI consulting, workflow automation, and adoption services — a multi-tens-of-billions market growing with the federal AI wave</td><td class="num">$10B+ / yr relevant spend</td></tr>
+    <tr><td class="k">SAM</td><td>Initial verticals and region: service firms 10–250 staff buying $2K–$90K engagements, plus SDVOSB-addressable federal professional services</td><td class="num">Thousands of buyers</td></tr>
+    <tr><td class="k">SOM</td><td>What the base plan actually requires — the honest test of feasibility</td><td class="num">See below</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <div class="callout">
+    <span class="tag">The feasibility test</span>
+    <p>Year-one base plan requires 18 workshops, 5 audits, 2 pilots, 2 growth-system builds, 1 training program, and one part-time federal subcontract. Year three requires roughly one audit and a fraction of a pilot per month with a five-person team. The plan does not require winning a material share of any market — it requires package discipline and a working funnel.</p>
+  </div>
+
+  <h3 class="sub">Buyer reality check</h3>
+  <ul class="dash">
+    <li><strong>Commercial buyers</strong> move in 2–8 week cycles, pay on delivery, and refer aggressively when the math is honest. They fund the company while federal cycles mature.</li>
+    <li><strong>Federal buyers</strong> move in quarters, pay reliably, and renew for years. They reward exactly what AAS already practices: documentation, governance, measured outcomes.</li>
+  </ul>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 16 — COMPETITION ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 06 — Competition &amp; positioning</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">06 · </span>Competition &amp; positioning</div>
+  <h2 class="sec">The lane is custom execution — held accountable.</h2>
+
+  <table class="tbl">
+    <tr><th style="width:1.55in;">Alternative</th><th>Where they win</th><th>Where AAS wins</th></tr>
+    <tr><td class="k">Large consultancies &amp; SIs</td><td>Enterprise relationships, scale, brand safety</td><td>Speed, price, senior attention; fixed-fee diagnostics instead of six-figure discovery phases</td></tr>
+    <tr><td class="k">Boutique AI build shops</td><td>Fast prototypes, deep tool fluency</td><td>Diagnosis before build, adoption ownership, measured outcomes — not another orphaned automation</td></tr>
+    <tr><td class="k">Freelancers &amp; offshore dev</td><td>Lowest sticker price</td><td>Accountability, governance, continuity; an operating partner, not a gig</td></tr>
+    <tr><td class="k">Internal teams ("we'll DIY it")</td><td>Context, zero procurement</td><td>Objective workflow truth, cross-client pattern library, dedicated capacity that internal teams never get</td></tr>
+    <tr><td class="k">Other SDVOSBs in IT services</td><td>Same set-aside access</td><td>Few combine agentic AI capability with a platform-backed, evidence-led method; most sell staff augmentation</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Positioning statement</h3>
+  <div class="pull">For operators who need AI to actually change how work moves, AAS is the operating partner that starts with evidence, builds with people in the loop, and stays accountable to the measured result.</div>
+
+  <h3 class="sub">The moat stack</h3>
+  <div class="grid2">
+    <div class="cell"><span class="cidx">M·01</span><h4>Diagnostic IP</h4><p>Seven-phase audit, six-factor scoring, canonical ROI math — productized in software, not in someone's head.</p></div>
+    <div class="cell"><span class="cidx">M·02</span><h4>Benchmark data</h4><p>Every engagement enriches an industry-tagged friction and outcome dataset competitors cannot copy.</p></div>
+    <div class="cell"><span class="cidx">M·03</span><h4>SDVOSB status</h4><p>Certification-gated demand: set-asides, sole source to $5M, VA priority, prime subcontracting goals.</p></div>
+    <div class="cell"><span class="cidx">M·04</span><h4>Operating accountability</h4><p>Twelve-month partnerships with quarterly reviews — switching costs built on trust and context, not lock-in.</p></div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 17 — GTM: TWO ENGINES ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 07 — Go-to-market</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">07 · </span>Go-to-market</div>
+  <h1 class="display" style="font-size:24pt;">Two engines.<br>One operating system.</h1>
+  <p class="lede">Commercial revenue funds the company now and builds the proof library. Federal certification compounds into a durable, mandated demand channel. Each engine de-risks the other.</p>
+
+  <div class="grid2">
+    <div class="cell">
+      <span class="cidx">Engine 1 — Commercial</span>
+      <h4>Weeks-long cycles, cash on delivery</h4>
+      <ul class="dash small">
+        <li>Founder-led workshops and operator briefings build the funnel.</li>
+        <li>Teardown content shows how AAS finds friction and ROI.</li>
+        <li>Audits convert to pilots; pilots convert to retainers.</li>
+        <li>Every engagement produces a before/after proof object.</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="cidx">Engine 2 — Federal</span>
+      <h4>Quarter-long cycles, compounding position</h4>
+      <ul class="dash small">
+        <li>Certification first; visibility second; relationships third.</li>
+        <li>Subcontracting and micro-purchases before prime pursuits.</li>
+        <li>VA Vets First as the priority agency beachhead.</li>
+        <li>Commercial past performance carries into CPARS credibility.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">How the engines reinforce</h3>
+  <ol class="num">
+    <li>Commercial audits generate measured outcomes → documented past performance for federal proposals.</li>
+    <li>Federal training and audit work generates steady-state revenue → funds commercial content and platform investment.</li>
+    <li>The platform's auditability — sources, snapshots, conservative scenarios — reads as compliance maturity to federal evaluators and as professionalism to commercial buyers.</li>
+    <li>SDVOSB status differentiates in commercial markets too: corporate supplier-diversity programs count certified veteran spend.</li>
+  </ol>
+
+  <div class="callout">
+    <span class="tag">Sequencing rule</span>
+    <p>Federal is a patience game played from a position of commercial strength. AAS does not starve while waiting for a contract award — and does not skip the certification window that makes the wait worthwhile.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 18 — GTM: COMMERCIAL FUNNEL ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 07 — Go-to-market</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Engine 1 — The commercial funnel</div>
+  <h2 class="sec">Market education → diagnostic → pilot → partnership.</h2>
+
+  <table class="tbl">
+    <tr><th style="width:1.35in;">Stage</th><th>Mechanism</th><th style="width:1.7in;" class="num">Planning assumption</th></tr>
+    <tr><td class="k">Education</td><td>Founder-led workshops; 3 teardown pieces per quarter; operator briefings</td><td class="num">2 workshops / month steady state</td></tr>
+    <tr><td class="k">Qualification</td><td>Six-point checklist: pain, sponsor, scope, budget, urgency, data access</td><td class="num">1 in 3 workshops → audit conversation</td></tr>
+    <tr><td class="k">Diagnostic</td><td>Foundation audit; readout pre-briefed; decision call within 5 business days</td><td class="num">5 audits Y1 → 12 Y2 → 15 Y3</td></tr>
+    <tr><td class="k">Pilot</td><td>Top-ranked opportunity becomes Momentum when ROI, build path, and adoption owner are clear</td><td class="num">~40% of audits convert</td></tr>
+    <tr><td class="k">Partnership</td><td>Successful pilot becomes Operating Partner</td><td class="num">~60% of pilots convert</td></tr>
+  </table>
+  <p class="micro">Conversion rates are planning assumptions (sample placeholders) — tracked in the pipeline from week one and revised quarterly.</p>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Channel plan, in priority order</h3>
+  <ol class="num">
+    <li><strong>Founder-led relationships.</strong> Direct outreach to operators in the launch verticals; every workshop ends with one named workflow candidate and sponsor.</li>
+    <li><strong>Teardown content.</strong> Published friction-and-ROI breakdowns in the AAS voice — institutional, numeric, conservative. Distribution: LinkedIn and the site.</li>
+    <li><strong>Referral loops.</strong> CPAs and attorneys who serve the launch verticals see their clients' friction first; AAS becomes their answer.</li>
+    <li><strong>Strategic free workshops.</strong> For high-value accounts only — a deliberate door-opener, not a discount habit.</li>
+  </ol>
+
+  <div class="watch">
+    <span class="tag">Objection to rehearse</span>
+    <p>"We can build this ourselves with AI." Correct — and irrelevant. The audit sells what DIY cannot produce: objective workflow truth, defensible math, prioritization, and an accountable owner for adoption. Rehearsed, evidence-first handling of this objection is a core sales asset.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 19 — GTM: FEDERAL LADDER ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 07 — Go-to-market</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Engine 2 — The federal capture ladder</div>
+  <h2 class="sec">Twenty-four months from certification to prime.</h2>
+
+  <table class="tbl">
+    <tr><th style="width:1.15in;">Phase</th><th style="width:1.6in;">Move</th><th>Detail</th></tr>
+    <tr><td class="k">Months 0–2</td><td class="k">Certify &amp; register</td><td>SAM.gov registration, DSBS profile optimized with agentic-AI keywords, SBA VetCert application (~12-day average processing), capability statement finalized</td></tr>
+    <tr><td class="k">Months 1–3</td><td class="k">Plug into the network</td><td>APEX Accelerator counselor engaged; VBOC counseling continues; OSDBU small-business specialist introductions at VA and two civilian agencies</td></tr>
+    <tr><td class="k">Months 2–6</td><td class="k">Sell small, direct</td><td>Micro-purchases (to $10K, government purchase card, no competition required) and simplified acquisitions (to $250K): workshops, training packages, audit-lite engagements sized for SAT</td></tr>
+    <tr><td class="k">Months 3–12</td><td class="k">Subcontract &amp; team</td><td>Target primes carrying SDVOSB subcontracting goals on AI/IT programs; SubNet and supplier-diversity portals; deliver flawlessly, collect past performance</td></tr>
+    <tr><td class="k">Months 6–18</td><td class="k">Shape set-asides</td><td>Respond to sources-sought notices and RFIs — a strong SDVOSB response can trigger the rule of two and convert open requirements into SDVOSB set-asides</td></tr>
+    <tr><td class="k">Months 12–24</td><td class="k">Pursue prime</td><td>First SDVOSB set-aside or VA Vets First award in the $100K–$500K band; OASIS+ SDVOSB submission when past performance supports it; sole-source relationships matured</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Priority targets</h3>
+  <ul class="dash">
+    <li><strong>VA first.</strong> 23.6% of VA prime dollars went to SDVOSBs in FY2024 under Vets First — mission alignment, statutory priority, and a buyer that understands veterans.</li>
+    <li><strong>DoD components</strong> riding the $13.4B AI budget line — entered through primes as a subcontractor before direct pursuit.</li>
+    <li><strong>Civilian AI buyers</strong> (GSA, HHS, USDA, NASA) for training and workflow-audit purchases under SAT.</li>
+  </ul>
+  <p class="micro">Offer-to-vehicle mapping: training → SAT purchases; audits → SDVOSB set-asides; pilots/managed ops → sole source within $5M and OASIS+ task orders.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 20 — MARKETING & BRAND ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 07 — Go-to-market</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Marketing &amp; brand system</div>
+  <h2 class="sec">The restraint is the brand.</h2>
+  <p>AAS markets the way it audits: institutional voice, real numbers with ranges, no hype, no exclamation marks, no AI-brain clip art. In a category saturated with breathless agencies, restraint reads as credibility — to a CFO and to a contracting officer alike. The brand system (paper, ink, one royal blue used as an event; Fraunces, Inter, IBM Plex Mono) is already built and deployed on the site, the platform, and this document set.</p>
+
+  <h3 class="sub">The content engine</h3>
+  <table class="tbl">
+    <tr><th style="width:1.7in;">Asset</th><th>Cadence</th><th>Job</th></tr>
+    <tr><td class="k">Teardown briefs</td><td>3 per quarter</td><td>Show the method: how AAS finds friction and prices it. Top of funnel.</td></tr>
+    <tr><td class="k">Benchmark notes</td><td>Quarterly, as data accrues</td><td>Platform-derived patterns by industry — unreplicable by competitors.</td></tr>
+    <tr><td class="k">Founder briefings</td><td>Weekly LinkedIn cadence</td><td>Operator-to-operator voice; veteran-business community presence.</td></tr>
+    <tr><td class="k">Capability briefings</td><td>As scheduled</td><td>15-minute OSDBU/prime supplier-diversity version of the capability statement.</td></tr>
+    <tr><td class="k">Workshop offers</td><td>Always-on</td><td>One-page offer that leads naturally into Foundation.</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Where AAS shows up</h3>
+  <ul class="dash">
+    <li>APEX Accelerator and OSDBU matchmaking events; veteran small-business conferences (e.g., National Veterans Small Business Coalition programming).</li>
+    <li>Industry rooms for the launch verticals — state CPA society events before generic tech conferences.</li>
+    <li>The platform readout itself: every shared audit link is a branded, live demonstration of the product.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="tag">Measurement</span>
+    <p>Marketing is tracked like delivery: workshops booked, audit conversations opened, proposals issued, win rate, and revenue per content quarter — reviewed in the monthly close, not by vibes.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 21 — OPERATIONS ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 08 — Operations &amp; delivery</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">08 · </span>Operations &amp; delivery</div>
+  <h2 class="sec">A connected operating model — applied to ourselves.</h2>
+
+  <h3 class="sub">Delivery methodology</h3>
+  <p><strong>Discover → Design → Approve → Automate → Measure.</strong> The audit runs a seven-phase protocol inside the platform; pilots run scoped build sprints with a 30-day stabilization window; retainers run a monthly optimization cadence with quarterly operating reviews. People, process, systems, visibility — standardized across every engagement.</p>
+
+  <h3 class="sub">Quality rules that are also trust assets</h3>
+  <div class="grid2">
+    <div class="cell"><span class="cidx">Q·01</span><p>Loaded hourly cost, never billing rate. Leakage separated from labor waste in every report.</p></div>
+    <div class="cell"><span class="cidx">Q·02</span><p>Every friction instance carries a documented source: observed, sampled, self-report, or system log.</p></div>
+    <div class="cell"><span class="cidx">Q·03</span><p>Never assume 100% recovery. Conservative and optimistic scenarios shown side by side.</p></div>
+    <div class="cell"><span class="cidx">Q·04</span><p>AI never writes a numeric field. Published snapshots are immutable. Every number traces to a source.</p></div>
+  </div>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Capacity &amp; tooling</h3>
+  <ul class="dash">
+    <li><strong>Capacity model:</strong> founder delivery capped at ~60% of working time; the rest is reserved for sales, content, and federal relationship-building. A vetted subcontractor bench absorbs build surges before the first hire.</li>
+    <li><strong>Tool posture:</strong> tool-agnostic, client-stack-first. AAS owns its method and platform; it does not resell licenses or take referral kickbacks that bias recommendations.</li>
+  </ul>
+
+  <h3 class="sub">Security &amp; compliance posture</h3>
+  <ul class="dash">
+    <li>Client data minimization, encrypted storage, access on least privilege; signed DPAs where client data is touched.</li>
+    <li>Insurance: general liability, professional liability (E&amp;O), and cyber liability in force before enterprise and federal work.</li>
+    <li>Federal trajectory: no CUI handling at launch; NIST 800-171 self-assessment and SPRS score prepared when DoD subcontracts appear; platform v3 GovCloud path keeps the long-term FedRAMP-aware option open.</li>
+  </ul>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 22 — ORGANIZATION ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 09 — Organization &amp; hiring</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">09 · </span>Organization &amp; hiring</div>
+  <h2 class="sec">Hire for the company AAS wants to become.</h2>
+  <p>The goal is not to clone the founder. It is to add complementary talent in a trigger-based sequence — each hire unlocked by demand evidence, not by hope. Loaded monthly costs are modeled in the workbook.</p>
+
+  <table class="tbl">
+    <tr><th style="width:0.5in;">#</th><th style="width:1.65in;">Role</th><th>Trigger</th><th style="width:1.1in;" class="num">Plan timing</th></tr>
+    <tr><td class="num">01</td><td class="k">Delivery analyst / consultant</td><td>Two concurrent audits or three in a quarter — makes Foundation repeatable: research, interviews, data capture, readout assembly</td><td class="num">Month 14</td></tr>
+    <tr><td class="num">02</td><td class="k">Systems engineer / automation lead</td><td>Consistent Momentum demand (2+ pilots per quarter) needing build depth beyond founder capacity</td><td class="num">Month 20</td></tr>
+    <tr><td class="num">03</td><td class="k">Client success / operating lead</td><td>Five active Operating Partner retainers needing cadence, stakeholder support, expansion management</td><td class="num">Month 26</td></tr>
+    <tr><td class="num">04</td><td class="k">Product engineer</td><td>Platform usage proves which workflows deserve software investment (v2 build)</td><td class="num">Month 32</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Year-three shape</h3>
+  <p>Five people plus a subcontractor bench: founder on positioning, federal capture, and key readouts; analyst-led audits; engineer-led builds; client-success-led retainers; product engineer hardening the platform toward v2/v3. Revenue per head stays above $400K (base plan) because the platform, not headcount, carries scale.</p>
+
+  <div class="callout">
+    <span class="tag">Veteran hiring intent</span>
+    <p>AAS recruits from the veteran and military-spouse talent pool first — mission-aligned, clearance-adjacent where federal work requires it, and consistent with who the company is.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 23 — FINANCIAL: ASSUMPTIONS ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 10 — Financial plan</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">10 · </span>Financial plan</div>
+  <h1 class="display" style="font-size:24pt;">Cash-flow funded.<br>Conservative by rule.</h1>
+  <p class="lede">The full model lives in the companion workbook — 36 months, formula-driven, every assumption editable. This section summarizes the base plan and its logic. All figures are founder planning assumptions (sample placeholders).</p>
+
+  <div class="grid2">
+    <div>
+      <div class="eyebrow">Startup costs — one-time</div>
+      <table class="tbl">
+        <tr><th>Item</th><th class="num" style="width:0.8in;">Amount</th></tr>
+        <tr><td>State filing + registered agent</td><td class="num">$400</td></tr>
+        <tr><td>Attorney — operating agreement</td><td class="num">$750</td></tr>
+        <tr><td>Insurance down payments</td><td class="num">$600</td></tr>
+        <tr><td>Equipment &amp; workstation</td><td class="num">$2,500</td></tr>
+        <tr><td>Software setup</td><td class="num">$500</td></tr>
+        <tr><td>Brand &amp; website (complete)</td><td class="num">$0</td></tr>
+        <tr><td>Accounting setup</td><td class="num">$300</td></tr>
+        <tr><td>Contracts pack</td><td class="num">$600</td></tr>
+        <tr><td>Working capital reserve</td><td class="num">$5,000</td></tr>
+        <tr><td>Contingency</td><td class="num">$1,000</td></tr>
+        <tr class="total"><td>Total</td><td class="num">$11,650</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="eyebrow">Funding plan</div>
+      <table class="tbl">
+        <tr><th>Source</th><th class="num" style="width:0.9in;">Amount</th></tr>
+        <tr><td>Owner contribution</td><td class="num">$20,000</td></tr>
+        <tr><td>Outside capital required</td><td class="num">$0</td></tr>
+        <tr><td>SBA Express line (optional buffer)</td><td class="num">to $50,000</td></tr>
+      </table>
+      <p class="small" style="margin-top:0.08in;">Veteran fee relief applies to SBA Express: no upfront guaranty fee on loans to veteran-owned businesses (to $500K program ceiling). The VR&amp;E Self-Employment track (Chapter 31) may additionally fund equipment and training if pursued — see Launch Guide, Phase 0.</p>
+      <div class="callout" style="margin-top:0.1in;">
+        <span class="tag">Cash discipline</span>
+        <p>Lowest modeled cash point is ~$6K in month two — before audit revenue lands. The optional credit line exists for exactly this window and for federal net-30/net-60 cycles later.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">Key model drivers (editable in workbook)</div>
+  <p class="small">Workshop $2,000 · Audit $25,000 · Pilot $55,000 average (60/40 recognition) · Operating Partner $6,000/mo · Agency build $15,000 + $1,500/mo care · Training $12,000 · Delivery COGS 12–15% of revenue · Owner draw $4K/mo from month 4 ($7K Y2, $9K Y3) · Tax set-aside 25% of positive net income.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 24 — FINANCIAL: 3-YEAR P&L ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 10 — Financial plan</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Three-year summary — base plan</div>
+  <h2 class="sec">Profitable in year one. Compounding by year three.</h2>
+
+  <table class="tbl">
+    <tr><th style="width:2.1in;">P&amp;L (base plan)</th><th class="num">Year 1</th><th class="num">Year 2</th><th class="num">Year 3</th></tr>
+    <tr><td class="k">Revenue</td><td class="num">$377,500</td><td class="num">$1,186,000</td><td class="num">$2,043,500</td></tr>
+    <tr><td>Delivery costs (COGS)</td><td class="num">($45,300)</td><td class="num">($177,900)</td><td class="num">($306,525)</td></tr>
+    <tr><td class="k">Gross profit</td><td class="num">$332,200</td><td class="num">$1,008,100</td><td class="num">$1,736,975</td></tr>
+    <tr><td>Operating expenses + payroll</td><td class="num">($24,480)</td><td class="num">($184,690)</td><td class="num">($450,985)</td></tr>
+    <tr><td>Owner draw</td><td class="num">($36,000)</td><td class="num">($84,000)</td><td class="num">($108,000)</td></tr>
+    <tr class="total"><td>Net income (pre-tax)</td><td class="num">$271,720</td><td class="num">$739,410</td><td class="num">$1,177,990</td></tr>
+    <tr><td class="k">Ending cash (after 25% tax set-aside)</td><td class="num">$211,560</td><td class="num">$766,118</td><td class="num">$1,649,610</td></tr>
+  </table>
+  <p class="micro">Pre-tax pass-through figures; the owner draw above is deliberately modest in year one. Net income is effectively founder earnings plus reinvestment capacity. Confirm tax treatment with a CPA.</p>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">Revenue mix evolution — base plan</div>
+  <div style="margin-top:0.06in;">
+    <div class="bar-row"><span class="bl">Year 1</span><div class="tr"><div class="fillbar" style="width:33%;"></div><div class="fillbar hot" style="left:33%; width:6%;"></div></div><span class="v">$377.5K</span></div>
+    <div class="bar-row"><span class="bl">Year 2</span><div class="tr"><div class="fillbar" style="width:52%;"></div><div class="fillbar hot" style="left:52%; width:8%;"></div></div><span class="v">$1.19M</span></div>
+    <div class="bar-row"><span class="bl">Year 3</span><div class="tr"><div class="fillbar" style="width:77%;"></div><div class="fillbar hot" style="left:77%; width:23%;"></div></div><span class="v">$2.04M</span></div>
+  </div>
+  <p class="micro">Black = commercial · Blue = federal. Bars scaled to year-three total. Federal share grows 6% → 14% → 23% as the capture ladder matures.</p>
+
+  <div class="sp-s"></div>
+  <div class="stats">
+    <div class="stat"><span class="n">88%</span><span class="l">Gross margin Y1 (85% at scale)</span></div>
+    <div class="stat hot"><span class="n">$60K</span><span class="l">Recurring revenue / month, Dec Y3</span></div>
+    <div class="stat"><span class="n">$409K</span><span class="l">Revenue per head, Y3 (5 FTE)</span></div>
+    <div class="stat"><span class="n">23%</span><span class="l">Federal share of revenue, Y3</span></div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 25 — FINANCIAL: Y1 + SCENARIOS ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 10 — Financial plan</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Year one, month by month — base plan</div>
+  <h2 class="sec">The first twelve months in cash.</h2>
+
+  <table class="tbl" style="font-size:7.6pt;">
+    <tr><th></th><th class="num">Jul</th><th class="num">Aug</th><th class="num">Sep</th><th class="num">Oct</th><th class="num">Nov</th><th class="num">Dec</th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th><th class="num">Apr</th><th class="num">May</th><th class="num">Jun</th></tr>
+    <tr><td class="k">Revenue ($K)</td><td class="num">—</td><td class="num">2.0</td><td class="num">27.0</td><td class="num">19.0</td><td class="num">29.0</td><td class="num">17.5</td><td class="num">29.0</td><td class="num">37.0</td><td class="num">42.5</td><td class="num">26.5</td><td class="num">66.0</td><td class="num">82.0</td></tr>
+    <tr><td class="k">Costs + draw ($K)</td><td class="num">2.0</td><td class="num">2.3</td><td class="num">5.3</td><td class="num">8.3</td><td class="num">9.5</td><td class="num">8.1</td><td class="num">9.5</td><td class="num">10.5</td><td class="num">11.1</td><td class="num">9.2</td><td class="num">14.0</td><td class="num">15.9</td></tr>
+    <tr><td class="k">Net ($K)</td><td class="num">(2.0)</td><td class="num">(0.3)</td><td class="num">21.7</td><td class="num">10.7</td><td class="num">19.5</td><td class="num">9.4</td><td class="num">19.5</td><td class="num">26.5</td><td class="num">31.4</td><td class="num">17.3</td><td class="num">52.0</td><td class="num">66.1</td></tr>
+  </table>
+  <p class="micro">Rounded from the workbook (Costs include COGS, opex, and owner draw; September = first audit revenue). Cumulative net income turns positive in month three.</p>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">Scenario discipline</div>
+  <table class="tbl">
+    <tr><th style="width:1.85in;">Scenario</th><th class="num">Y1 revenue</th><th class="num">Y3 revenue</th><th>Operating response</th></tr>
+    <tr><td class="k">Conservative (0.55×)</td><td class="num">$207,600</td><td class="num">$1,123,900</td><td>Delay hires by ~2 quarters; founder holds delivery; draw stays at $4K; federal sub work prioritized for stability</td></tr>
+    <tr><td class="k">Base plan</td><td class="num">$377,500</td><td class="num">$2,043,500</td><td>Hire on triggers as modeled; platform v2 funded from cash</td></tr>
+    <tr><td class="k">Stretch (1.40×)</td><td class="num">$528,500</td><td class="num">$2,860,900</td><td>Pull analyst hire forward; raise audit price test to $30K; accelerate OASIS+ submission</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">Break-even reality</h3>
+  <p>Year-one fixed costs average <strong>$5,040 per month</strong> including the owner draw. At an 88% gross margin, covering them takes roughly <strong>$5,700 of monthly revenue — one workshop and a third of an audit</strong>. The risk in this plan is not the cost base; it is funnel discipline. That is why marketing is measured like delivery (Section 7) and why the 90-Day Action Plan exists.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 26 — SWOT ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 11 — SWOT analysis</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">11 · </span>SWOT analysis</div>
+  <h2 class="sec">Honest inventory.</h2>
+  <div class="swot">
+    <div class="q">
+      <h4 style="color:var(--ink);">Strengths</h4>
+      <ul class="dash">
+        <li>Productized, evidence-led method — audit playbook, ROI math, and platform already built</li>
+        <li>SDVOSB eligibility with clean 100% ownership and control</li>
+        <li>Brand system with federal-grade restraint, deployed</li>
+        <li>Near-zero fixed cost base; profitable at one workshop + a third of an audit per month</li>
+        <li>Founder fluency across brand, systems, and delivery</li>
+      </ul>
+    </div>
+    <div class="q">
+      <h4 style="color:var(--ink);">Weaknesses</h4>
+      <ul class="dash">
+        <li>Single-person dependency at launch — sales, delivery, and certification compliance all route through the founder</li>
+        <li>No formal past performance record yet; references must be built deliberately</li>
+        <li>No existing federal relationships; OSDBU network starts cold</li>
+        <li>Platform v1 is solo-operator software; v2 investment needed before team scale</li>
+      </ul>
+    </div>
+    <div class="q">
+      <h4 style="color:var(--blue);">Opportunities</h4>
+      <ul class="dash">
+        <li>5% SDVOSB goal missed in FY25 — agencies actively need certified vendors</li>
+        <li>Federal AI demand compounding (DoD $13.4B line; 1,700+ AI contracts)</li>
+        <li>OASIS+ continuous SDVOSB on-ramp open as of January 2026</li>
+        <li>VA Vets First: 23.6% of VA primes to SDVOSBs — deepest beachhead</li>
+        <li>Commercial AI disillusionment favors evidence-led diagnostics</li>
+      </ul>
+    </div>
+    <div class="q">
+      <h4 style="color:var(--ink);">Threats</h4>
+      <ul class="dash">
+        <li>Development commoditization compresses build pricing (mitigated: sell diagnosis and accountability, not hours)</li>
+        <li>Federal budget volatility, continuing resolutions, shutdown risk</li>
+        <li>Policy shifts in small-business contracting goals over time</li>
+        <li>Large primes moving down-market into SMB AI services</li>
+        <li>AI-hype backlash suppressing category trust</li>
+      </ul>
+    </div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 27 — RISKS ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 12 — Risks &amp; mitigations</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">12 · </span>Risks &amp; mitigations</div>
+  <h2 class="sec">Named, owned, and countered.</h2>
+  <table class="tbl">
+    <tr><th style="width:2.0in;">Risk</th><th>Counter</th></tr>
+    <tr><td class="k">Development commoditizes</td><td>Sell diagnosis, ROI, adoption, and operating accountability — never build hours. The audit is the product clients cannot DIY.</td></tr>
+    <tr><td class="k">Clients ask for random automations</td><td>Enforce package discipline: one workflow, one sponsor, one decision call. Custom work happens inside a repeatable system.</td></tr>
+    <tr><td class="k">Founder becomes the bottleneck</td><td>Productize Foundation in the platform first; trigger-based analyst hire; subcontractor bench for build surges.</td></tr>
+    <tr><td class="k">Reports become one-off artifacts</td><td>Every audit captured in the platform schema with immutable snapshots; data compounds into benchmarks.</td></tr>
+    <tr><td class="k">AI hype damages trust</td><td>Institutional, numeric, conservative voice; documented sources; human-in-the-loop by default.</td></tr>
+    <tr><td class="k">Federal cycles outlast cash</td><td>Two-engine model: commercial revenue funds the wait; micro-purchase/SAT sales shorten federal time-to-revenue; optional credit line for net-60 cycles.</td></tr>
+    <tr><td class="k">Client concentration</td><td>Cap any single client at ~40% of trailing revenue once past year one; diversify across the two engines by design.</td></tr>
+    <tr><td class="k">Certification compliance drift</td><td>Operating agreement preserves unconditional control; material changes reviewed against 13 CFR 128 before signing anything; recertification calendared.</td></tr>
+    <tr><td class="k">Key-person continuity</td><td>SOPs and platform capture the method; insurance and a designated operational executor noted in the operating agreement.</td></tr>
+  </table>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 28 — MILESTONES & KPIs ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Section 13 — Milestones &amp; KPIs</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow"><span class="idx">13 · </span>Milestones &amp; KPIs</div>
+  <h2 class="sec">Twelve months of checkpoints.</h2>
+  <table class="tbl">
+    <tr><th style="width:1.05in;">When</th><th>Milestone</th></tr>
+    <tr><td class="k">Month 1</td><td>LLC formed; EIN; bank account; insurance bound; operating agreement with SDVOSB control language executed</td></tr>
+    <tr><td class="k">Month 2</td><td>SAM.gov active; DSBS optimized; SBA VetCert application submitted; first paid workshop delivered</td></tr>
+    <tr><td class="k">Month 3</td><td>SDVOSB certification decision expected; first Foundation audit closed; capability statement in circulation</td></tr>
+    <tr><td class="k">Month 4–6</td><td>APEX bid-match live; two sources-sought responses filed; first agency growth-system build; cumulative net income positive (achieved month 3 in base plan)</td></tr>
+    <tr><td class="k">Month 6–9</td><td>First federal micro-purchase or training sale; second and third audits; first Momentum pilot live</td></tr>
+    <tr><td class="k">Month 9–12</td><td>First subcontract with a prime; first Operating Partner retainer signed; pipeline ≥ 3× next-quarter target</td></tr>
+    <tr><td class="k">Month 12</td><td>Year-one review against this plan; revise assumptions; decide analyst hire (trigger: 2 concurrent audits)</td></tr>
+  </table>
+
+  <div class="sp-s"></div>
+  <div class="eyebrow">The operating scoreboard — reviewed monthly</div>
+  <div class="grid3">
+    <div class="kpi"><span class="h">Funnel</span><p class="small">Workshops booked · audit conversations opened · proposals out · win rate</p></div>
+    <div class="kpi"><span class="h">Delivery</span><p class="small">Audits on time · readout-to-decision days · pilot adoption rate · retainer NRR</p></div>
+    <div class="kpi"><span class="h">Federal</span><p class="small">Sources-sought responses · OSDBU meetings · sub bids · weighted pipeline $</p></div>
+    <div class="kpi"><span class="h">Cash</span><p class="small">Ending cash · runway months · AR aging · tax set-aside funded</p></div>
+    <div class="kpi"><span class="h">Platform</span><p class="small">Audits run through platform · time-to-readout · benchmark records accrued</p></div>
+    <div class="kpi"><span class="h">Compliance</span><p class="small">SAM renewal date · VetCert recert date · insurance current · CPARS health</p></div>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 29 — APPENDIX A ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Appendix A — SDVOSB fact sheet</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Appendix A</div>
+  <h2 class="sec">SDVOSB rules at a glance — June 2026.</h2>
+  <table class="tbl">
+    <tr><th style="width:2.0in;">Item</th><th>Current rule</th></tr>
+    <tr><td class="k">Governing regulation</td><td>13 CFR Part 128 — Veteran Small Business Certification Program (SBA)</td></tr>
+    <tr><td class="k">Ownership test</td><td>≥51% direct, unconditional ownership by one or more service-disabled veterans</td></tr>
+    <tr><td class="k">Control test</td><td>SDV controls day-to-day operations and long-term decisions; holds highest officer position; full-time devotion expected</td></tr>
+    <tr><td class="k">Disability threshold</td><td>Any VA service-connected rating qualifies — including 0%</td></tr>
+    <tr><td class="k">Where to certify</td><td>SBA VetCert — veterans.certify.sba.gov (free; no third party needed)</td></tr>
+    <tr><td class="k">Processing time</td><td>~12 days average (backlog cleared late 2025); plan for 30</td></tr>
+    <tr><td class="k">Certification term</td><td>3 years; recertify before expiration</td></tr>
+    <tr><td class="k">Self-certification</td><td>Eliminated December 22, 2024 — certification required for set-asides and for agency goal credit</td></tr>
+    <tr><td class="k">Set-aside trigger</td><td>"Rule of two": reasonable expectation of offers from two or more certified SDVOSBs</td></tr>
+    <tr><td class="k">Sole-source ceiling</td><td>$5M services / $8.5M manufacturing (FAR 19.1406)</td></tr>
+    <tr><td class="k">Government-wide goal</td><td>5% of prime contract dollars (raised from 3% by NDAA FY2024)</td></tr>
+    <tr><td class="k">VA preference</td><td>Vets First: SDVOSBs first in VA's contracting order of priority (VAAR 819.70)</td></tr>
+    <tr><td class="k">Size standard (primary NAICS)</td><td>541512 — $34M average annual receipts (5-year average, with affiliates)</td></tr>
+    <tr><td class="k">Subcontracting limits</td><td>On set-aside services contracts, ≥50% of the contract amount must be performed by the SDVOSB or similarly situated entities (FAR 52.219-14)</td></tr>
+  </table>
+  <p class="micro">Educational summary, not legal advice. Rules change; verify at ecfr.gov and acquisition.gov before relying on any threshold.</p>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 30 — APPENDIX B ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Appendix B — NAICS &amp; DSBS</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Appendix B</div>
+  <h2 class="sec">NAICS codes &amp; discoverability keywords.</h2>
+  <table class="tbl">
+    <tr><th style="width:0.75in;">Code</th><th>Title</th><th style="width:1.15in;" class="num">Size standard</th><th>Maps to</th></tr>
+    <tr><td class="num k">541512</td><td>Computer Systems Design Services <span class="chip">Primary</span></td><td class="num">$34M</td><td>Pilots, managed AI operations, platform work</td></tr>
+    <tr><td class="num">541511</td><td>Custom Computer Programming Services</td><td class="num">$34M</td><td>Agentic builds, integrations</td></tr>
+    <tr><td class="num">541611</td><td>Administrative &amp; General Management Consulting</td><td class="num">$24.5M</td><td>Workflow audits, operating-model design</td></tr>
+    <tr><td class="num">541618</td><td>Other Management Consulting Services</td><td class="num">verify</td><td>Specialized operations consulting</td></tr>
+    <tr><td class="num">611430</td><td>Professional &amp; Management Development Training</td><td class="num">verify</td><td>AI training &amp; onboarding programs</td></tr>
+    <tr><td class="num">541613</td><td>Marketing Consulting Services</td><td class="num">verify</td><td>Agency strategy &amp; growth systems</td></tr>
+    <tr><td class="num">541430</td><td>Graphic Design Services</td><td class="num">verify</td><td>Brand creation line</td></tr>
+  </table>
+  <p class="micro">Size standards shift with SBA rulemaking (an increase to several receipts-based standards was proposed in 2025). Confirm at sba.gov/size-standards when registering; "verify" marks codes to confirm at filing time.</p>
+
+  <div class="sp-s"></div>
+  <h3 class="sub">DSBS / SAM capabilities narrative — keyword bank</h3>
+  <p class="small">agentic AI · AI workflow automation · intelligent automation · workflow intelligence audit · business process automation · process improvement · operational analytics · executive dashboards · AI adoption training · AI governance · human-in-the-loop systems · document processing automation · CRM automation · marketing automation · AI chatbots · AI voice agents · robotic process automation · change management · program visibility · operational readiness</p>
+
+  <div class="callout">
+    <span class="tag">Why this matters</span>
+    <p>Contracting officers and primes search DSBS and SAM by keyword when doing market research for the rule of two. The capabilities narrative is lead generation infrastructure — write it for their searches, not for poetry.</p>
+  </div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 31 — APPENDIX C SOURCES ============================== -->
+<div class="page">
+  <div class="band"><span class="doc">Appendix C — Sources</span><img src="assets/logo-nav-dark.png" alt="AAS"></div>
+  <div class="eyebrow">Appendix C</div>
+  <h2 class="sec">Sources &amp; further reading.</h2>
+  <p class="small" style="margin-bottom:0.12in;">Key external facts in this plan trace to the following, accessed June 2026. Companion documents carry their own source lists.</p>
+  <div class="src"><strong>Certification &amp; rules.</strong> SBA Veteran Small Business Certification — <span class="u">veterans.certify.sba.gov</span> · 13 CFR Part 128 — <span class="u">ecfr.gov/current/title-13/chapter-I/part-128</span> · SBA veteran contracting programs — <span class="u">sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs</span> · Self-certification elimination — <span class="u">nasbp.org/post/sba-issues-direct-final-rule-eliminating-self-certification-for-service-disabled-veteran-owned-small-businesses</span></div>
+  <div class="src"><strong>Thresholds &amp; procedures.</strong> FAR 19.1406 sole-source — <span class="u">acquisition.gov/far/19.1406</span> · FAR subpart 19.14 — <span class="u">acquisition.gov/far/subpart-19.14</span> · VA Vets First, VAAR 819.70 — <span class="u">acquisition.gov/vaar/subpart-819.70-va-veterans-first-contracting-program</span> · Size standards — <span class="u">sba.gov/document/support-table-size-standards</span></div>
+  <div class="src"><strong>Market data.</strong> FY25 SDVOSB obligations ($28.6B; 4.7% vs 5% goal) — <span class="u">fed-spend.com/blog/sdvosb-contract-opportunities-veteran-owned-2026</span> and <span class="u">govconintelligence.com</span> · Goal increase to 5% — <span class="u">congress.gov/crs-product/IN12018</span> · VA 23.63% FY24 — <span class="u">newswire.ciras.iastate.edu/2025/10/13/understanding-leveraging-federal-veterans-first-preferences</span> · Federal AI spending and contract counts — <span class="u">brookings.edu/articles/where-does-federal-ai-spending-stand-in-2026</span> · DoD $13.4B AI budget — <span class="u">ibl.ai/blog/pentagon-13-4b-ai-budget-fy2026-government-procurement</span></div>
+  <div class="src"><strong>Vehicles &amp; registration.</strong> OASIS+ continuous on-ramp (Amendment 8, Jan 12, 2026) — <span class="u">gsa.gov/buy-through-us/products-and-services/professional-services/buy-services/oasis-plus</span> and <span class="u">bakertilly.com/insights/oasis-plus-phase-ii-2026</span> · SAM.gov registration — <span class="u">sam.gov/entity-registration</span></div>
+  <div class="src"><strong>Funding &amp; support.</strong> SBA 7(a)/Express FY2026 fees (veteran relief) — <span class="u">sba.gov/document/information-notice-5000-872051-7a-fees-effective-october-1-2025-fiscal-year-2026</span> · VBOC program — <span class="u">sba.gov/local-assistance/resource-partners/veterans-business-outreach-center-vboc-program</span> · VR&amp;E Self-Employment track — <span class="u">va.gov/careers-employment/vocational-rehabilitation/programs/self-employment</span> · APEX Accelerators — <span class="u">apexaccelerators.us</span> · Texas veteran LLC benefits — <span class="u">comptroller.texas.gov/taxes/franchise/veteran-business.php</span></div>
+  <div class="src"><strong>Internal.</strong> AAS strategy &amp; methodology — BUSINESS_GAME_PLAN.md, PROJECT.md, BRAND.md (platform-docs) · aas-fable.vercel.app · Site outcome statistics (14%, 34%, 1.5M hours, 2.5×) are the published benchmarks cited on the AAS site with its caveat: actual outcomes vary by organization, scope, adoption, and starting point.</div>
+  <div class="folio"><span>Advanced Agentic Systems · Business plan — confidential</span><span class="pg"></span></div>
+</div>
+
+<!-- ============================== PAGE 32 — BACK COVER ============================== -->
+<div class="page night">
+  <div style="margin-top:3.4in; text-align:center;">
+    <img src="assets/logo-mark.png" alt="AAS mark" style="height:0.62in; opacity:.95;">
+    <h1 class="display" style="font-size:26pt; margin-top:0.34in; color:#F9F7F1;">Start with proof.<br>Scale with <em>confidence.</em></h1>
+    <p style="font-family:var(--mono); font-size:7.5pt; letter-spacing:0.22em; text-transform:uppercase; color:var(--night-faint); margin-top:0.3in;">Advanced Agentic Systems · Business plan · June 2026</p>
+  </div>
+  <div class="cover-meta">
+    <span>Deyvis Martinez · Founder &amp; CEO</span>
+    <span><span class="fill" style="color:#6E96FF;">[email]</span> · <span class="fill" style="color:#6E96FF;">[phone]</span></span>
+    <span>Confidential</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "buildCommand": "echo 'Static site, no build needed'",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/startup-templates/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/startup-templates/:file",
+      "destination": "/startup-templates/:file"
+    }
+  ]
+}
